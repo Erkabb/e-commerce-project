@@ -1,11 +1,11 @@
 import React from "react";
-// import { PiPhoneCallLight } from "react-icons/pi";
-// import { IoMailOutline } from "react-icons/io5";
-// import { MdCopyright } from "react-icons/md";
-// import { FaFacebookSquare, FaInstagramSquare } from "react-icons/fa";
-// import { FaSquareXTwitter } from "react-icons/fa6";
-// import { FaLinkedin } from "react-icons/fa";
-
+import { Mail } from "lucide-react";
+import { Copyright } from "lucide-react";
+import { Facebook } from "lucide-react";
+import { Instagram } from "lucide-react";
+import { Linkedin } from "lucide-react";
+import { Phone } from "lucide-react";
+import { Twitter } from "lucide-react";
 const Footer = () => {
   return (
     <div className="w-full h-[282px] bg-black">
@@ -14,22 +14,22 @@ const Footer = () => {
           <img src="./Vector.png" alt="" />
         </div>
         <div>
-          {/* <PiPhoneCallLight /> */}
+          <Phone />
           <p>(976)7007-1234</p>
-          {/* <IoMailOutline /> */}
+          <Mail />
           <p>contact@ecommerce.mn</p>
         </div>
       </div>
       <div>
         <div>
-          {/* <MdCopyright /> */}
+          <Copyright />
           <p>2024 Ecommerce MN</p>
         </div>
         <div>
-          {/* <FaFacebookSquare />
-          <FaInstagramSquare />
-          <FaSquareXTwitter />
-          <FaLinkedin /> */}
+          <Facebook />
+          <Instagram />
+          <Linkedin />
+          <Twitter />
         </div>
       </div>
     </div>

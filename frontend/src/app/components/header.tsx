@@ -2,7 +2,7 @@ import React from "react";
 
 const Header = () => {
   return (
-    <div className="w-full h-[88px] bg-black">
+    <div className="w-full h-[88px] bg-black flex">
       <div>
         <div>
           <img src="./Vector.png" alt="" />

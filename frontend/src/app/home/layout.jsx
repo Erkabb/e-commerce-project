@@ -1,5 +1,6 @@
 "use client";
 
+import Footer from "../components/footer";
 import Header from "../components/header";
 
 const Layout = ({ children }) => {
@@ -8,6 +9,7 @@ const Layout = ({ children }) => {
       <Header />
 
       {children}
+      <Footer />
     </div>
   );
 };

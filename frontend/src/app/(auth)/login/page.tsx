@@ -21,9 +21,11 @@ const Login = () => {
             placeholder="Нууц үг"
           />
 
-          <button className="btn btn-wide bg-blue-700  w-[348px] h-[40px] border-2 rounded-3xl text-white">
-            Нэвтрэх
-          </button>
+          <Link href={"/home"}>
+            <button className="btn btn-wide bg-blue-700  w-[348px] h-[40px] border-2 rounded-3xl text-white">
+              Нэвтрэх
+            </button>
+          </Link>
           <Link className="text-slate-400 text-center" href={"/signup"}>
             Нууц үг мартсан
           </Link>
