@@ -1,11 +1,12 @@
 import { model, Schema } from "mongoose";
+import bcrypt from "bcrypt";
 
 interface IUser {
   _id: Schema.Types.ObjectId;
   firstname: String;
   lastname: String;
   email: String;
-  hashedPass: string;
+  password: string;
   cellphone: String;
   role: String;
   pfp: String;
@@ -27,7 +28,7 @@ const userSchema = new Schema<IUser>({
     unique: true,
     required: [true, "Хэрэглэгчийн имэйл хаягийг заавал оруулна."],
   },
-  hashedPass: {
+  password: {
     type: String,
     minLength: [8, "Хэрэглэгчийн нууц үг 8 тэмдэгтээс доошгүй байна."],
     required: [true, "Нууц үг заавал оруулна уу."],
@@ -52,6 +53,16 @@ const userSchema = new Schema<IUser>({
     type: Date,
     default: Date.now,
   },
+});
+
+userSchema.pre("save", function (next) {
+  if (!this.isModified("password")) {
+    next();
+  } else {
+    const hashedPass = bcrypt.hashSync(this.password, 8);
+    this.password = hashedPass;
+    next();
+  }
 });
 
 const User = model("user", userSchema);

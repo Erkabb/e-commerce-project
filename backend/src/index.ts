@@ -1,6 +1,7 @@
 import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import authRoute from "./routes/auth-routes";
+import cors from "cors";
 
 import connectDB from "./config/db";
 const userRouter = require("./routes/user.router");
@@ -11,6 +12,7 @@ const MONGO_URI = process.env.MONGO_URI || "";
 const app = express();
 
 //middleware
+app.use(cors());
 app.use(express.json());
 app.use("/api/v1/auth", authRoute);
 app.use("/users", userRouter);
