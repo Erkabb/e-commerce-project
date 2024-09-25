@@ -1,7 +1,8 @@
 import { Request, Response } from "express";
 import User from "../models/user.model";
 import bcrypt from "bcrypt";
-import jwt from "jsonwebtoken";
+import { generateToken } from "../utils/jwt";
+
 //mongoose=>odm=>object data mapping
 export const login = async (req: Request, res: Response) => {
   // res.status(200).json({ message: "success" });
@@ -14,9 +15,7 @@ export const login = async (req: Request, res: Response) => {
     if (!isCheckPass) {
       res.status(402).json({ message: "Your password or email is incorrect." });
     } else {
-      const token = jwt.sign({ id: user.id }, "JWT_TOKEN_PASS@123", {
-        expiresIn: "1h",
-      });
+      const token = generateToken({ id: user._id });
       res.status(200).json({ message: "Successfull", token });
     }
   }
