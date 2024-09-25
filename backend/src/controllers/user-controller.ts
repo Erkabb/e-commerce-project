@@ -7,6 +7,6 @@ export const getAllUser = (req: any, res: any) => {
 
 export const deleteUser = (req: any, res: any) => {
   const { id } = req.params;
-  const data = User.findByIdAndDelete;
+  const data = User.findByIdAndDelete(id);
   res.data(200).json({ message: "deleted", user: data });
 };
