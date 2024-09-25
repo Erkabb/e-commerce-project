@@ -5,3 +5,14 @@
 .cart {
   color: white;
 }
+.headerPic {
+  background-position-y: 30%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.subPic {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  border-radius: 20px;
+}
