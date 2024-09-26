@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
+import RecoverPass from "@/app/components/recover.pass";
 
 const Login = () => {
   const router = useRouter();
@@ -59,13 +60,11 @@ const Login = () => {
               Нэвтрэх
             </button>
           </Link>
-          <Link className="text-slate-400 text-center" href={"/signup"}>
-            Нууц үг мартсан
-          </Link>
+          <div>Нууц үг мартсан</div>
         </div>
         <Link href={"/signup"}>
           {" "}
-          <button className="btn btn-wide h-[40px] bg-white border-2 border-blue-700 rounded-2xl text-blue-700">
+          <button className="btn w-[348px] h-[40px] bg-white border-2 border-blue-700 rounded-2xl text-blue-700">
             Бүртгүүлэх
           </button>
         </Link>

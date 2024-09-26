@@ -8,28 +8,28 @@ import { Phone } from "lucide-react";
 import { Twitter } from "lucide-react";
 const Footer = () => {
   return (
-    <footer className="w-full h-[282px] bg-black flex">
-      <div className="flex">
+    <footer className="w-full h-[340px] bg-black flex flex-col">
+      <div className=" h-[250px] flex justify-between mx-20 py-20 border-b-2 border-slate-800">
         <div>
           <img src="./Vector.png" alt="" />
         </div>
-        <div>
-          <Phone />
+        <div className="text-white flex gap-5">
+          <Phone className="cart" />
           <p>(976)7007-1234</p>
-          <Mail />
+          <Mail className="cart" />
           <p>contact@ecommerce.mn</p>
         </div>
       </div>
-      <div>
-        <div>
-          <Copyright />
+      <div className="flex justify-between mx-20 my-20">
+        <div className="text-[14px] text-white flex items-center">
+          <Copyright className="cart" size={13} />
           <p>2024 Ecommerce MN</p>
         </div>
-        <div>
-          <Facebook />
-          <Instagram />
-          <Linkedin />
-          <Twitter />
+        <div className="flex gap-5">
+          <Facebook className="cart" />
+          <Instagram className="cart" />
+          <Linkedin className="cart" />
+          <Twitter className="cart" />
         </div>
       </div>
     </footer>

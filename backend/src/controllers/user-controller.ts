@@ -1,8 +1,10 @@
 import User from "../models/user.model";
+import { Request, Response } from "express";
 
-export const getAllUser = (req: any, res: any) => {
-  const data = User;
-  res.status(200).json({ message: "all users", user: data });
+export const getCurrentUser = async (req: Request, res: Response) => {
+  const { id } = req.user;
+  const findUser = await User.findById(id);
+  res.status(200).json({ user: findUser, message: "success" });
 };
 
 export const deleteUser = (req: any, res: any) => {
