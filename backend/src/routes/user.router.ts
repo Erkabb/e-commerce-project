@@ -1,13 +1,18 @@
 import { authentication } from "../middlewares/authentication";
 
-const { Router } = require("express");
-const {
-  deleteUser,
+import { Router } from "express";
+import {
   getCurrentUser,
-} = require("../controllers/user-controller");
+  verifyOtp,
+  verifyPassword,
+  forgetPassword,
+} from "../controllers/user-controller";
 
 const router = Router();
-router.route("/").get(authentication, getCurrentUser);
-router.route("/:id").get(deleteUser);
+router.route("/currentuser").get(authentication, getCurrentUser);
 
-module.exports = router;
+router.route("/verify-password").post(verifyPassword);
+router.route("/forget-password").post(forgetPassword);
+router.route("/verify-otp").post(verifyOtp);
+
+export default router;

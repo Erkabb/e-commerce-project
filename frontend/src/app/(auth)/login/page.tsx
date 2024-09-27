@@ -4,7 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
-import RecoverPass from "@/app/recover.pass/page.tsx";
+import RecoverPass from "@/app/recover.pass/page";
+import { Button } from "@/components/ui/button";
 
 const Login = () => {
   const router = useRouter();
@@ -55,12 +56,16 @@ const Login = () => {
             }}
           />
 
-          <Link href={"/home"}>
-            <button className="btn btn-wide bg-blue-700  w-[348px] h-[40px] border-2 rounded-3xl text-white">
-              Нэвтрэх
-            </button>
+          <button
+            className="btn btn-wide bg-blue-700  w-[348px] h-[40px] border-2 rounded-3xl text-white"
+            onClick={logIn}
+          >
+            Нэвтрэх
+          </button>
+
+          <Link href={"/recover.pass"}>
+            <Button variant="link">Нууц үг мартсан</Button>
           </Link>
-          <div>Нууц үг мартсан</div>
         </div>
         <Link href={"/signup"}>
           {" "}

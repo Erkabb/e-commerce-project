@@ -7,7 +7,7 @@ import { generateToken } from "../utils/jwt";
 export const login = async (req: Request, res: Response) => {
   // res.status(200).json({ message: "success" });
   const { email, password } = req.body;
-  const [user] = await User.find({ email: email });
+  const user = await User.findOne({ email: email });
   if (!user) {
     res.status(404).json({ message: "user not found." });
   } else {

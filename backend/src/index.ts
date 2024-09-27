@@ -6,7 +6,7 @@ import nodemailer from "nodemailer";
 import connectDB from "./config/db";
 import productandclasslistRouter from "./routes/product-routes";
 
-const userRouter = require("./routes/user.router");
+import userRouter from "./routes/user.router";
 
 dotenv.config();
 const PORT = process.env.PORT || "";

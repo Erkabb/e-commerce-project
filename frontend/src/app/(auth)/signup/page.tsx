@@ -4,8 +4,10 @@ import Link from "next/link";
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 const Signup = () => {
+  const router = useRouter();
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
@@ -26,6 +28,7 @@ const Signup = () => {
       );
       if (response.status === 201) {
         toast.success("Signed up", { autoClose: 1000 });
+        router.push("/login");
       }
     } catch (error) {
       console.error("Failed to signed up", error);
