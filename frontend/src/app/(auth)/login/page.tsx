@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
-import RecoverPass from "@/app/components/recover.pass";
+import RecoverPass from "@/app/recover.pass/page.tsx";
 
 const Login = () => {
   const router = useRouter();

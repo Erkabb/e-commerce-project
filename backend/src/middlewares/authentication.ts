@@ -5,13 +5,13 @@ import { decodeToken } from "../utils/jwt";
 interface IMyReq extends Request {
   user: any;
 }
-declare global {
-  namespace Express {
-    interface Request {
-      user: any;
-    }
-  }
-}
+// declare global {
+//   namespace Express {
+//     interface Request {
+//       user: any;
+//     }
+//   }
+// }
 export const authentication = (
   req: IMyReq,
   res: Response,

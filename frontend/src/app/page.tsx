@@ -1,7 +1,7 @@
 "use client";
 
 import Login from "./(auth)/login/page";
-import RecoverPass from "./components/recover.pass";
+import RecoverPass from "./recover.pass/page.tsx";
 
 export default function Home() {
   return (

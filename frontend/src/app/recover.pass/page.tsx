@@ -1,10 +1,12 @@
 "use client";
 
 import axios from "axios";
+import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const RecoverPass = () => {
+  const router=useRouter()
   // const [loading, setLoading] = useState(false);
 
   // useEffect(() => {
@@ -27,13 +29,18 @@ const RecoverPass = () => {
           email,
         }
       );
+      // if (res.status === 2000) {
+        
+      // }
     } catch (error) {
       toast.error("Please try again");
     }
   };
   return (
     <div className="flex flex-col my-96 gap-5">
-      <h1 className="text-center text-[24px]">
+      {step === 1 && (
+        <>
+        <h1 className="text-center text-[24px]">
         <strong>Нууц үг сэргээх</strong>
       </h1>
       <input
@@ -47,7 +54,8 @@ const RecoverPass = () => {
         onChange={handleSendOtp}
       >
         Илгээх
-      </button>
+      </button></>
+       )}
     </div>
   );
 };
