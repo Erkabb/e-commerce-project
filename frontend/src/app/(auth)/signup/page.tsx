@@ -37,14 +37,14 @@ const Signup = () => {
   };
   return (
     <div className="w-full h-screen flex items-center justify-center">
-      <div className="w-[350px] h-[550px] flex flex-col gap-7 ">
-        <h1 className="text-center text-[24px]">
+      <div className="w-[420px] h-[600px] flex flex-col gap-7 ">
+        <h1 className="text-center text-[30px]">
           <strong>Бүртгүүлэх</strong>
         </h1>
-        <div className="flex flex-col gap-5 text-[14px]">
+        <div className="flex flex-col gap-5 text-[22px]">
           <input
             type="text"
-            className="input border-2 border-slate-100  w-[348px] h-[40px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100  w-[420px] h-[60px] rounded-3xl bg-white pl-2"
             placeholder="Нэр"
             onChange={(e) => {
               setUserData({ ...userData, firstname: e.target.value });
@@ -52,7 +52,7 @@ const Signup = () => {
           />
           <input
             type="text"
-            className="input border-2 border-slate-100  w-[348px] h-[40px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100  w-[420px] h-[60px] rounded-3xl bg-white pl-2"
             placeholder="Овог"
             onChange={(e) => {
               setUserData({ ...userData, lastname: e.target.value });
@@ -61,7 +61,7 @@ const Signup = () => {
 
           <input
             type="text"
-            className="input border-2 border-slate-100  w-[348px] h-[40px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100  w-[420px] h-[60px] rounded-3xl bg-white pl-2"
             placeholder="Имэйл хаяг"
             onChange={(e) => {
               setUserData({ ...userData, email: e.target.value });
@@ -70,7 +70,7 @@ const Signup = () => {
 
           <input
             type="text"
-            className="input border-2 border-slate-100  w-[348px] h-[40px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100 w-[420px] h-[60px] rounded-3xl bg-white pl-2"
             placeholder="Нууц үг"
             onChange={(e) => {
               setUserData({ ...userData, password: e.target.value });
@@ -79,29 +79,29 @@ const Signup = () => {
 
           <input
             type="text"
-            className="input border-2 border-slate-100  w-[348px] h-[40px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100  w-[420px] h-[60px] rounded-3xl bg-white pl-2"
             placeholder="Нууц үг давтах"
             onChange={(e) => {
               setUserData({ ...userData, repassword: e.target.value });
             }}
           />
 
-          <ul className="text-slate-500 text-[12px]">
+          <ul className="text-slate-500 text-[18px]">
             <li>Том үсэг орсон байх</li>
             <li>Жижиг үсэг орсон байх</li>
             <li>Тоо орсон байх</li>
             <li>Тэмдэгт орсон байх</li>
           </ul>
           <button
-            className="btn btn-wide h-[40px] bg-blue-700 border-2 rounded-3xl text-white"
+            className="btn  w-[420px] h-[60px] bg-blue-700 border-2 rounded-3xl text-white text-[22px]"
             onClick={signUp}
           >
             Үүсгэх
           </button>
         </div>
-        <button className="btn btn-wide h-[40px] bg-white border-2 border-blue-700 rounded-3xl text-blue-700">
-          <Link href={"/login"}>Нэвтрэх</Link>
-        </button>
+       
+          <Link href={"/login"}> <button className="btn  w-[420px] h-[55px] bg-white border-2 border-blue-700 rounded-3xl text-blue-700 text-[22px]">Нэвтрэх </button></Link>
+       
       </div>
     </div>
   );

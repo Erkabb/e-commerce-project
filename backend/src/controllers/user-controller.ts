@@ -22,10 +22,13 @@ export const forgetPassword = async (req: Request, res: Response) => {
     findUser.otp = otp;
     await findUser.save();
     await sendEmail(email, otp);
+
     res
       .status(200)
       .json({ message: "OTP code sent to your email succesfully" });
-  } catch (error) {}
+  } catch (error) {
+    console.log("otp error", error);
+  }
 };
 
 export const verifyOtp = async (req: Request, res: Response) => {

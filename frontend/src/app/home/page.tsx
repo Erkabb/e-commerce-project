@@ -19,121 +19,335 @@ const MainContent = () => {
       <div className="grid grid-rows-6 grid-cols-4 gap-4 w-[1038px] h-[2400px] m-auto my-10 ">
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
+         
         >
           {/* <h1>The Prompt Magazine</h1>
           <p className="text-">
             <strong>120 000₮</strong>
           </p> */}
+          <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+  <figure>
+    <img
+      src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+      alt="Shoes" className="rounded-2xl h-[320px]" />
+  </figure>
+  <div className="card-body pl-5 text-[20px]">
+    <h2 className="card-title ">
+      The Prompt Magazine
+      
+    </h2>
+    <p><strong>120 000₮</strong></p>
+   
+  </div>
+</div>
         </div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
-        {/* <h1>The Prompt Magazine</h1>
-        <p className="text-">
-          <strong>120 000₮</strong>
-        </p> */}
+          
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
+        
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+         
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+         
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+          
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+          
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
+        
           className="row-span-2 col-span-2 subPic"
-        ></div>
+        > <div className="card bg-base-100 w-[511px] h-[788px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl w-[511px] h-[715px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
+         
           className="row-span-2 col-span-2 subPic"
-        ></div>
+        > <div className="card bg-base-100 w-[511px] h-[780px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl w-[511px] h-[715px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+         
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+         
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+        
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+        
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+        
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+         
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+         
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+          
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>{" "}
+        
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>{" "}
         <div
           className="subPic"
-          style={{
-            backgroundImage: `url(https://s3-alpha-sig.figma.com/img/974f/255c/442865345ea31abbd131ca74d9c2d592?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=SRCzIsCGmlFbQUKkLgq9su9mBjFEYzQxkbqdBV0j78xXyLXn~VNHQI8JFPG3H~znFaSAiAx5GGRgFK4i5y1kZEc0cVWDdAydvkb49Ahj5nIRqcHlZKZxZuVEDZPsQoZoBS4pbJIEU3uieftPjQiWbCmClU63MF~hYsQ4Bauv3xAhHpdLpi1GEDMnjqSWXS0a9GuqD3-rxLIGUXsRW4c4Ytx5VNOmL1Ex-nrSi~XfuBuQVzJuRsF1cC2B1qyqoqjRhk2CADB~YwBYUZymL77QMoTkwJpMSiCePizmXPBnhsvFY0wCNxCNV~koo06EsaOebN~HKmhpsx7l6hBimo4CZQ__)`,
-          }}
-        ></div>
+          
+        > <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl">
+        <figure>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/00a8/58db/dfc54f4f631ad7c6f0421f3fa722a566?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=HrrJOl0issFa7HGGhJO8p80HZ~md-oV7Q36~JrAwkkE~hgwp4WrF~vVtxsnTJgYExXbDe-AE9l3n~vsPSv~MIjUAe0fjcsi7jnrC0k86EWntoGABvYp9Tl6i6sBoFDrnu6zVEsKLgjsT~dw4Cln6w1fd-F5dkcJ~OfRC5O6eSjnK9jVEqWu64cP3~B-iFDscLTNrIwiuLGGM5dRaYreOztKAJtdA0RalItcxA8JROdiRAwfV4pcL2BejQlgyrJYXbvDHuyMux3WxjS8kCjuxUum8ljTfl~MsgfN0Ovvic~5vvZMBqswu0cRQ3mtVj057gPwiHPjNGSNrhDsq3ada6Q__"
+            alt="Shoes" className="rounded-2xl h-[320px]" />
+        </figure>
+        <div className="card-body pl-5 text-[20px]">
+          <h2 className="card-title ">
+            The Prompt Magazine
+            
+          </h2>
+          <p><strong>120 000₮</strong></p>
+         
+        </div>
+      </div></div>
       </div>
     </main>
   );

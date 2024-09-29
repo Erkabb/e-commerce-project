@@ -31,7 +31,7 @@ const RecoverPass = () => {
     console.log(email);
     try {
       const res = await axios.post(
-        "http://localhost:8000/api/v1/auth/forget-password",
+        "http://localhost:8000/users/forgetpassword",
         {
           email,
         }
@@ -49,7 +49,7 @@ const RecoverPass = () => {
       // router.push("//newpass");
       try {
         const res = await axios.post(
-          "http://hocalhost:8000/api/v1/auth/verify-otp",
+          "http://hocalhost:8000/users/verify-otp",
           {
             email,
             otpValue,
@@ -97,7 +97,7 @@ const RecoverPass = () => {
           />
           <Button
             className="btn w-[348px] h-[40px]  border-2 bg-blue-700 rounded-2xl text-white"
-            onChange={handleSendOtp}
+            onClick={handleSendOtp}
           >
             Илгээх
           </Button>

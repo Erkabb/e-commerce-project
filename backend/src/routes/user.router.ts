@@ -12,7 +12,7 @@ const router = Router();
 router.route("/currentuser").get(authentication, getCurrentUser);
 
 router.route("/verify-password").post(verifyPassword);
-router.route("/forget-password").post(forgetPassword);
+router.route("/forgetpassword").post(forgetPassword);
 router.route("/verify-otp").post(verifyOtp);
 
 export default router;

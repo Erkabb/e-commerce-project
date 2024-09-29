@@ -1,9 +1,9 @@
 import nodemailer from "nodemailer";
-import generateHTML from "./generateHTML";
+import {generateHTML} from "./generateHTML";
 
 const transporter = nodemailer.createTransport({
   service: "Gmail",
-  host: "smtp.gmail.email",
+  host: "smtp.gmail.com",
   port: 465,
   secure: true,
   auth: {
@@ -13,11 +13,10 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendEmail = async (email: string, otp: string): Promise<void> => {
-  const info = await transporter.sendMail({
-    from: "erkabb816@gmail.com", // sender address
+  await transporter.sendMail({
+    from: process.env.RESEND_USER_EMAIL, // sender address
     to: email, // list of receivers
     subject: "E-Commerce", // Subject line
-
-    html: generateHTML(otp), // html body
+   html: generateHTML(otp), // html body
   });
 };

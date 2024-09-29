@@ -1,6 +1,6 @@
 import React from "react";
 
-const generateHTML = (otp: string) => {
+export const generateHTML = (otp: string) => {
   return `
       <div style="overflow: auto;">
         <div style="margin: 50px auto; width: 70%; padding: 20px 0;">
@@ -39,4 +39,3 @@ const generateHTML = (otp: string) => {
       `;
 };
 
-export default generateHTML;

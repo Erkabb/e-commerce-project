@@ -28,6 +28,6 @@
     ".next/types/**/*.ts",
     "src/app/home/layout.jsx",
     "src/app/context/user-context.tsx"
-  ],
+, "src/app/category"  ],
   "exclude": ["node_modules"]
 }

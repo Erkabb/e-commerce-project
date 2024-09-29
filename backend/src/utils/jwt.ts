@@ -5,5 +5,5 @@ export const generateToken = (playload: object) => {
   });
 };
 export const decodeToken = (token: string) => {
-  return jwt.verify(token, process.env.JWT_TOKWN_PASSWORD || "");
+  return jwt.verify(token, process.env.JWT_TOKEN_PASSWORD || "");
 };
