@@ -5,7 +5,6 @@ import { Input } from "@/components/ui/input";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import { MailOpen } from "lucide-react";
 import ClipLoader from "react-spinners/ClipLoader";
 import {
@@ -39,29 +38,20 @@ const RecoverPass = () => {
       if (res.status === 200) {
         setStep(step + 1);
       }
-    } catch (error) {
-      toast.error("Please try again");
-    }
+    } catch (error) {}
   };
   const handleConfirmOtp = async (value: string) => {
     setOtpValue(value);
     if (value.length === 4) {
-      // router.push("//newpass");
       try {
-        const res = await axios.post(
-          "http://hocalhost:8000/users/verify-otp",
-          {
-            email,
-            otpValue,
-          }
-        );
+        const res = await axios.post("http://localhost:8000/users/verifyotp", {
+          email,
+          otpValue,
+        });
         if (res.status === 200) {
-          toast.success("Link of recover password sent to your email.");
-          router.push("/login");
+          setStep(step + 1);
         }
-      } catch (error) {
-        toast.error("Something went wrong");
-      }
+      } catch (error) {}
     }
   };
   const handleResendOtp = () => {
@@ -114,14 +104,17 @@ const RecoverPass = () => {
               data-testid="loader"
             />
           ) : (
-            <>
+            <div className="flex flex-col items-center gap-5 my-96">
               <MailOpen />
-              <h1>Баталгаажуулах</h1>
+              <h1 className="text-[24px]">
+                <strong>Баталгаажуулах</strong>{" "}
+              </h1>
               <p>
-                “mujo@nest.edu.mn” хаягт илгээсэн баталгаажуулах кодыг оруулна
-                уу
+                {" "}
+                <strong>{email}</strong> хаягт илгээсэн баталгаажуулах кодыг
+                оруулна уу
               </p>
-              <div className="">
+              <div className="text-center">
                 <InputOTP
                   maxLength={4}
                   value={otpValue}
@@ -135,14 +128,14 @@ const RecoverPass = () => {
                   </InputOTPGroup>
                 </InputOTP>
                 <Button
-                  className="text-[14px] text-slate-300"
+                  className="text-[14px] text-slate-300 "
                   onClick={handleResendOtp}
                   variant="link"
                 >
                   Дахин илгээх ({countdown})
                 </Button>
               </div>
-            </>
+            </div>
           )}
         </div>
       )}

@@ -7,7 +7,7 @@ interface IUser {
   lastname: String;
   email: String;
   password: string;
-  cellphone: String;
+  cellphone: string;
   role: String;
   pfp: String;
   address: String;

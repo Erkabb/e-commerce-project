@@ -1,5 +1,8 @@
 import nodemailer from "nodemailer";
-import {generateHTML} from "./generateHTML";
+import { generateHTML } from "./generateHTML";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const transporter = nodemailer.createTransport({
   service: "Gmail",
@@ -13,10 +16,11 @@ const transporter = nodemailer.createTransport({
 });
 
 export const sendEmail = async (email: string, otp: string): Promise<void> => {
+  console.log("email:", email);
   await transporter.sendMail({
     from: process.env.RESEND_USER_EMAIL, // sender address
     to: email, // list of receivers
     subject: "E-Commerce", // Subject line
-   html: generateHTML(otp), // html body
+    html: generateHTML(otp), // html body
   });
 };

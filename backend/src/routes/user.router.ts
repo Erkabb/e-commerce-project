@@ -3,6 +3,7 @@ import { authentication } from "../middlewares/authentication";
 import { Router } from "express";
 import {
   getCurrentUser,
+  getAllUsers,
   verifyOtp,
   verifyPassword,
   forgetPassword,
@@ -10,9 +11,9 @@ import {
 
 const router = Router();
 router.route("/currentuser").get(authentication, getCurrentUser);
-
+router.route("/allusers").get(getAllUsers);
 router.route("/verify-password").post(verifyPassword);
 router.route("/forgetpassword").post(forgetPassword);
-router.route("/verify-otp").post(verifyOtp);
+router.route("/verifyotp").post(verifyOtp);
 
 export default router;

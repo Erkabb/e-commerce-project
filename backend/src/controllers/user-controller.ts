@@ -8,6 +8,11 @@ export const getCurrentUser = async (req: Request, res: Response) => {
   const findUser = await User.findById(id);
   res.status(200).json({ user: findUser, message: "success" });
 };
+export const getAllUsers = async (req: Request, res: Response) => {
+  const { firstname, lastname, email } = req.body;
+  const data = await User.find(firstname, lastname, email);
+  res.status(200).json({ message: "Success", user: data });
+};
 
 export const forgetPassword = async (req: Request, res: Response) => {
   try {
@@ -41,16 +46,16 @@ export const verifyOtp = async (req: Request, res: Response) => {
 
   const resetToken = crypto.randomBytes(25).toString("hex");
   const hashedResetToken = crypto
-    .createHash("")
+    .createHash("sha256")
     .update(resetToken)
     .digest("hex");
   findUser.passwordResetToken = hashedResetToken;
   findUser.passwordResetTokenExpire = new Date(Date.now() + 10 * 60 * 1000);
   await findUser.save();
-
+  console.log("token:", resetToken);
   await sendEmail(
     email,
-    `<a href="http://localhost:3000/newpass?resetoken="${resetToken}>Reset Password link</a>`
+    `<a href="http://localhost:3000/newpass?resettoken="${resetToken}>Reset Password link</a>`
   );
   res.status(200).json({ message: "Link sent to your email" });
 };

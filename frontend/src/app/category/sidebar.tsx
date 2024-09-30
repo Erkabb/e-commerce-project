@@ -1,30 +1,78 @@
 const Sidebar = () => {
-    return (
-        <div className="flex flex-col text-[18px] gap-5">
-            <div className="flex flex-col gap-2">
-                <h1><strong>Ангилал</strong></h1>
-                <ul className="text-[16px]">
-                    <li><input type="checkbox"  className="checkbox" />Малгай</li>
-                    <li><input type="checkbox"  className="checkbox" />Усны сав</li>
-                    <li><input type="checkbox"  className="checkbox" />T-Shirt</li>
-                    <li><input type="checkbox"  className="checkbox" />Hoodie</li>
-                    <li><input type="checkbox"  className="checkbox" />Tee</li>
-                    <li><input type="checkbox"  className="checkbox" />Цүнх</li>
-                </ul>
-            </div>
-            <div className="flex flex-col gap-2">
-                <h1><strong>Хэмжээ</strong></h1>
-                <ul className="text-[16px]">
-                <li><input type="checkbox"  className="checkbox" />Free</li>
-                    <li><input type="checkbox"  className="checkbox" />XS</li>
-                    <li><input type="checkbox"  className="checkbox" />S</li>
-                    <li><input type="checkbox"  className="checkbox" />M</li>
-                    <li><input type="checkbox"  className="checkbox" />L</li>
-                    <li><input type="checkbox"  className="checkbox" />XL</li>
-                    <li><input type="checkbox"  className="checkbox" />XXL</li>
-                    <li><input type="checkbox"  className="checkbox" />XXXL</li>
-           </ul> </div>
-        </div>
-    )
-}
+  return (
+    <div className="flex flex-wrap text-[18px] gap-5">
+      <div className="flex flex-col gap-2 text-[16px]">
+        <h1>
+          <strong>Season</strong>
+        </h1>
+
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Winter
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Spring
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Summer
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Autumn
+        </button>
+      </div>
+      <div className="flex flex-col gap-2 text-[16px]">
+        <h1>
+          <strong>Material</strong>
+        </h1>
+
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Jersey
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Faux
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Leather
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Cotton
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Silk
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Knit
+        </button>
+      </div>
+      <div className="flex flex-col gap-2 text-[16px]">
+        <h1>
+          <strong>Size</strong>
+        </h1>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          Free
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          XS
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          S
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          M
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          L
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          XL
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          XXL
+        </button>
+        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+          XXXL
+        </button>
+      </div>
+    </div>
+  );
+};
 export default Sidebar;

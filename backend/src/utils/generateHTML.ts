@@ -1,5 +1,3 @@
-import React from "react";
-
 export const generateHTML = (otp: string) => {
   return `
       <div style="overflow: auto;">
@@ -38,4 +36,3 @@ export const generateHTML = (otp: string) => {
       </div>
       `;
 };
-
