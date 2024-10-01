@@ -69,7 +69,7 @@ export const verifyPassword = async (req: Request, res: Response) => {
 
   const findUser = await User.findOne({
     passwordResetToken: hashedResetToken,
-    passwordResetTokenExpire: { $gt: Date.now },
+    passwordResetTokenExpire: { $gt: Date.now() },
   });
   if (!findUser) {
     return res.status(400).json({ message: "Нууц үг сэргээх хугацаа дууссан" });
