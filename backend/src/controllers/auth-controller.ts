@@ -16,7 +16,12 @@ export const login = async (req: Request, res: Response) => {
       res.status(402).json({ message: "Your password or email is incorrect." });
     } else {
       const token = generateToken({ id: user._id });
-      res.status(200).json({ message: "Successfull", token });
+      const { firstname, email, cellphone, address } = user;
+      res.status(200).json({
+        message: "Successfull",
+        token,
+        user: { firstname, email, cellphone, address },
+      });
     }
   }
 };

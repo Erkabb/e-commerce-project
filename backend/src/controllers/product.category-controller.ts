@@ -36,3 +36,14 @@ export const productInfo = async (req: Request, res: Response) => {
     res.status(404).json({ message: "Failed", error: error });
   }
 };
+export const getAllProduct = async (req: Request, res: Response) => {
+  const { name, price, description } = req.body;
+  const product = await Product.find(name, price, description);
+  res.status(201).json({ product });
+};
+
+export const deleteProduct = async (req: Request, res: Response) => {
+  const { id } = req.body;
+  const data = await Product.deleteOne(id);
+  res.status(201).json({ data });
+};

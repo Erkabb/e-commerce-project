@@ -1,27 +1,22 @@
 "use client";
 
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
 const MainContent = () => {
-  const [productData, setProductData] = useState({
-    name: "",
-    description: "",
-    price: "",
-  });
+  const [productData, setProductData] = useState<any[]>([]);
   const AddProduct = async () => {
-    const { name, description, price } = productData;
     try {
       const response = await axios.post(
-        `http://localhost:8000/products/product`,
-        { name, description, price }
+        `http://localhost:8000/products/allproduct`
       );
-      if (response.status === 202) {
-        toast.success("Product added", { autoClose: 1000 });
-      }
+      setProductData(response.data.product);
     } catch (error) {}
   };
+  useEffect(() => {
+    AddProduct();
+  }, []);
   return (
     <main>
       <div

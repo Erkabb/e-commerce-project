@@ -1,8 +1,11 @@
+"use client";
 import { User, ShoppingCart, Heart, Search } from "lucide-react";
 import Link from "next/link";
 import CategoryOnHeader, { categories } from "./category.onheader";
+import { useUser } from "../context/user-context";
 
 const SecondHeader = () => {
+  const { user } = useUser();
   return (
     <header className="flex flex-col">
       <div className="w-full h-[88px] bg-black flex text-[16px] items-center justify-evenly">
@@ -36,14 +39,31 @@ const SecondHeader = () => {
           <Link href={"/likedproducts"}>
             <Heart className="cart" />
           </Link>
-          <Link href={"/userprofile"}>
-            <User className="cart" />
-          </Link>
-        </div>
+          {user && (
+            <Link href={"/userprofile"}>
+              <User className="cart" />
+            </Link>
+          )}
+
+          {!user && (
+            <div className="flex gap-2">
+              <Link href={"/signup"}>
+                <button className="text-white btn w-[100px] h-[40px]  border-2 border-blue-700  rounded-3xl">
+                  Бүртгүүлэх
+                </button>
+              </Link>
+              <Link href={"/login"}>
+                <button className=" btn w-[80px] h-[40px] border-1 bg-blue-700 rounded-3xl text-white">
+                  Нэвтрэх
+                </button>
+              </Link>
+            </div>
+          )}
+        </div>{" "}
       </div>
       <div className="w-[full] h-[80px] flex bg-black text-[24px] text-white justify-center gap-10">
-        {categories.map((categories) => (
-          <CategoryOnHeader cat={categories.cat} />
+        {categories.map(({ cat, subCat }) => (
+          <CategoryOnHeader cat={cat} subCat={subCat} />
         ))}
       </div>
     </header>

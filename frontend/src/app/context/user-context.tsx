@@ -1,43 +1,41 @@
-// "use client";
+"use client";
 
-// import React, { createContext, ProviderProps, useState } from "react";
-// import axios from "axios";
-// type UserProvider = {
-//   value: PropertyKey;
-//   children: React.ReactNode;
-// };
+import { createContext, useContext, useState } from "react";
 
-// export const UserContext = createContext(null);
+interface IUser {
+  firstname: string;
+  email: string;
+  cellphone: string;
+  address: string;
+}
+interface IContext {
+  user: IUser | null;
+  setUser: Function;
+  login: () => null;
+}
+export const UserContext = createContext<IContext>({
+  user: null,
+  setUser: Function,
+  login: () => null,
+});
 
-// export const UserProvider = ({ children }: UserProvider) => {
-//   const [user, setUser] = useState({
-//     firstname: "",
-//     lastname: "",
-//     email: "",
-//   });
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
+  const [user, setUser] = useState<IUser | null>(null);
+  const login = () => {
+    try {
+      //axios ywulna
+      return null;
+    } catch (error) {
+      return null;
+    }
+  };
 
-//   const fetchUserData = async () => {
-//     try {
-//       const token = localStorage.getItem("token");
-//       const response = await axios.get(
-//         `http://localhost:8000/api/v1/auth/signup`,
-//         {
-//           headers: {
-//             Authorization: `Bearer ${token}`,
-//           },
-//         }
-//       );
-
-//       if (response.status === 200) {
-//         setUser(response.data);
-//       }
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   };
-//   return (
-//     <UserContext.Provider value={{ user, fetchUserData }}>
-//       {children}
-//     </UserContext.Provider>
-//   );
-// };
+  return (
+    <UserContext.Provider value={{ user, setUser, login }}>
+      {children}
+    </UserContext.Provider>
+  );
+};
+export const useUser = () => {
+  return useContext(UserContext);
+};
