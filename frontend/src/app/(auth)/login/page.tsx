@@ -6,9 +6,11 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import RecoverPass from "@/app/recover.pass/page";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@/app/context/user-context";
 
 const Login = () => {
   const router = useRouter();
+  const { setUser, setToken } = useUser();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -22,8 +24,10 @@ const Login = () => {
       );
       if (response.status === 200) {
         toast.success("Signed in ", { autoClose: 1000 });
-        const { token } = response.data;
+        const { token, user } = response.data;
         localStorage.setItem("token", token);
+        setToken(token);
+        setUser(user);
         router.push("/home");
       }
     } catch (error) {
@@ -64,7 +68,9 @@ const Login = () => {
           </button>
 
           <Link href={"/recover.pass"}>
-            <Button variant="link" className="text-[20px] text-center">Нууц үг мартсан</Button>
+            <Button variant="link" className="text-[20px] text-center">
+              Нууц үг мартсан
+            </Button>
           </Link>
         </div>
         <Link href={"/signup"}>

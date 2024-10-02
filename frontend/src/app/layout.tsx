@@ -6,7 +6,7 @@ import { ToastContainer } from "react-toastify";
 import React from "react";
 
 import Footer from "./components/footer";
-import SecondHeader from "./components/aftersignin.header";
+import Header from "./components/header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -35,7 +35,7 @@ export default function RootLayout({ children }: TProps) {
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {" "}
-        <SecondHeader />
+        <Header />
         {children}
         <ToastContainer />
         <Footer />
