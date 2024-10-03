@@ -37,8 +37,13 @@ export const productInfo = async (req: Request, res: Response) => {
   }
 };
 export const getAllProduct = async (req: Request, res: Response) => {
-  const product = await Product.find({}).populate("category");
-  res.status(201).json({ product });
+  try {
+    const products = await Product.find({}).populate("category");
+		res.status(200).json({ message: "success to get all product", products });
+	} catch (error) {
+		console.error(error);
+		res.status(400).json({ message: "failed to get all product" });
+	}
 };
 
 export const deleteProduct = async (req: Request, res: Response) => {

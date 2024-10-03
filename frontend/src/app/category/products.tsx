@@ -7,8 +7,8 @@ const Products = () => {
   const fetchProductData = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/products/allproducts`);
-      console.log("product:", res.data.product);
-      setProductData(res.data.product);
+      console.log("product:", res.data.products);
+      setProductData(res.data.products);
     } catch (error) {
       console.log("error", error);
     }
