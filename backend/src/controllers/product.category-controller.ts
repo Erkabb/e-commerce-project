@@ -37,8 +37,7 @@ export const productInfo = async (req: Request, res: Response) => {
   }
 };
 export const getAllProduct = async (req: Request, res: Response) => {
-  const { name, price, description } = req.body;
-  const product = await Product.find(name, price, description);
+  const product = await Product.find({}).populate("category");
   res.status(201).json({ product });
 };
 
@@ -46,4 +45,14 @@ export const deleteProduct = async (req: Request, res: Response) => {
   const { id } = req.body;
   const data = await Product.deleteOne(id);
   res.status(201).json({ data });
+};
+
+export const getProduct = async (req: Request, res: Response) => {
+  const { pId } = req.params;
+  try {
+    const product = await Product.findById(pId);
+    res.status(200).json({ message: "success", product });
+  } catch (error) {
+    res.status(400).json({ message: '"failed' });
+  }
 };
