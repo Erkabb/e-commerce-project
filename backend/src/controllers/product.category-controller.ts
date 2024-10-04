@@ -39,11 +39,13 @@ export const productInfo = async (req: Request, res: Response) => {
 export const getAllProduct = async (req: Request, res: Response) => {
   try {
     const products = await Product.find({}).populate("category");
-		res.status(200).json({ message: "success to get all product", products });
-	} catch (error) {
-		console.error(error);
-		res.status(400).json({ message: "failed to get all product" });
-	}
+    res
+      .status(200)
+      .json({ message: "success to get all product", products: products });
+  } catch (error) {
+    console.error(error);
+    res.status(400).json({ message: "failed to get all product" });
+  }
 };
 
 export const deleteProduct = async (req: Request, res: Response) => {
@@ -55,9 +57,10 @@ export const deleteProduct = async (req: Request, res: Response) => {
 export const getProduct = async (req: Request, res: Response) => {
   const { pId } = req.params;
   try {
-    const product = await Product.findById(pId);
-    res.status(200).json({ message: "success", product });
+    const product = await Product.findById(pId).populate("category");
+    res.status(200).json({ message: "success", product: product });
   } catch (error) {
-    res.status(400).json({ message: '"failed' });
+    console.log("error", error);
+    res.status(400).json({ message: "failed" });
   }
 };

@@ -2,7 +2,6 @@ import express, { Request, Response } from "express";
 import dotenv from "dotenv";
 import authRoute from "./routes/auth-routes";
 import cors from "cors";
-import nodemailer from "nodemailer";
 import connectDB from "./config/db";
 import productandclasslistRouter from "./routes/product-routes";
 
