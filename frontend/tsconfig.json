@@ -30,6 +30,6 @@
     "src/app/context/user-context.tsx",
     "src/app/category",
     "src/app/userprofile"
-  ],
+, "src/app/product.detail"  ],
   "exclude": ["node_modules"]
 }

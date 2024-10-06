@@ -60,7 +60,7 @@ export const getProduct = async (req: Request, res: Response) => {
     const product = await Product.findById(pId).populate("category");
     res.status(200).json({ message: "success", product: product });
   } catch (error) {
-    console.log("error", error);
+    console.log("error:", error);
     res.status(400).json({ message: "failed" });
   }
 };

@@ -1,24 +1,26 @@
 "use client";
 import axios from "axios";
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
 const Products = () => {
-  const [productData, setProductData] = useState<any[]>([]);
-  const fetchProductData = async () => {
+  const [productsData, setProductsData] = useState<any[]>([]);
+  const fetchProductsData = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/products/allproducts`);
       console.log("product:", res.data.products);
-      setProductData(res.data.products);
+      setProductsData(res.data.products);
     } catch (error) {
       console.log("error", error);
     }
   };
   useEffect(() => {
-    fetchProductData();
+    fetchProductsData();
   }, []);
   return (
     <div className=" w-[790px] flex flex-wrap gap-5">
-      {productData?.map((product) => (
+      {productsData?.map((product) => (
+        <Link href={"/product.detail"}>
         <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl flex flex-col items-center">
           <figure>
             <img
@@ -33,7 +35,7 @@ const Products = () => {
               <strong>{product.price}₮</strong>
             </p>
           </div>
-        </div>
+        </div></Link>
       ))}
     </div>
   );

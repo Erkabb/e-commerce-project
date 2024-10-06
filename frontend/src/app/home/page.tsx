@@ -18,7 +18,7 @@ const MainContent = () => {
     AddProduct();
   }, []);
   return (
-    <main>
+    <main className="w-full">
       <div
         style={{
           backgroundImage: `url(https://s3-alpha-sig.figma.com/img/3708/a364/2cc93e10c62fdcfbc65fcc2ebd1c8aac?Expires=1728259200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Mkr~BM8SrxlS6Qn0WwA~5lt7ZaEgY8Ssr~dYmHi5VtyDQvpB7B8YsmaSaaulbE5TuTylklhjiGloOnxJTrYWtkJdQQxbWdw6ac5PBbnVlWkNirMAF6cGGjk3YBMH9P9eqmbULF9ur4fEQOuD-RGG-oiyqG-fBdUIHFJ~IBMU72Tfuv0iKRsY0TBOrIj0cw4qyAw-e4qgztf346~JzfcitLNY5SzX4wRn69aBMEp-Qk-gi3~okx2EIEWM~mk8jIIKCiAwKmNRRYBSXxvzS3v9Xshp3JQvJbsccq4n41qJAvxqd77KlZtxWoCvv2l1VLmIeqIaE4Z~WuWqkcGeX2yzrw__)`,
