@@ -29,7 +29,8 @@
     "src/app/home/layout.jsx",
     "src/app/context/user-context.tsx",
     "src/app/category",
-    "src/app/userprofile"
-, "src/app/product.detail"  ],
+    "src/app/userprofile",
+    "src/app/[id]"
+  ],
   "exclude": ["node_modules"]
 }

@@ -1,9 +1,8 @@
 "use client";
 import { User, ShoppingCart, Heart, Search, LogOut } from "lucide-react";
 import Link from "next/link";
-import CategoryOnHeader, { categories } from "./category.onheader";
-import { LoginContext, useUser } from "../context/user-context";
-import { useContext, useState } from "react";
+import CategoryOnHeader, { categories } from "./category-onheader";
+import { useUser } from "../context/user-context";
 
 const Header = () => {
   const { user } = useUser();
@@ -34,10 +33,10 @@ const Header = () => {
           />
         </div>
         <div className="flex gap-4 items-center">
-          <Link href={"/likedproducts"}>
+          <Link href={"/product-cart"}>
             <ShoppingCart className="cart" />
           </Link>
-          <Link href={"/likedproducts"}>
+          <Link href={"/wishlist"}>
             <Heart className="cart" />
           </Link>
           {user && (
@@ -72,7 +71,7 @@ const Header = () => {
         </div>
       </div>
       <div className="w-[full] h-[80px] flex bg-black text-[24px] text-white justify-center gap-10">
-        {categories.map(({ cat, subCat }) => (
+        {categories?.map(({ cat, subCat }) => (
           <CategoryOnHeader cat={cat} subCat={subCat} />
         ))}
       </div>

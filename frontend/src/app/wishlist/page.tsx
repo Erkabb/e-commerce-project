@@ -1,4 +1,4 @@
-const FavProducts = () => {
+const Wishlist = () => {
   return (
     <div className="flex flex-col items-center my-96 text-[24px]">
       <h1>
@@ -7,4 +7,4 @@ const FavProducts = () => {
     </div>
   );
 };
-export default FavProducts;
+export default Wishlist;

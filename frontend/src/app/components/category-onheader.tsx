@@ -23,6 +23,7 @@ export const categories = [
   },
   {
     cat: "Sale",
+    subCat: "Season",
   },
 ];
 
@@ -31,14 +32,14 @@ const CategoryOnHeader = ({ cat, subCat }: any) => {
     <div className="dropdown py-5">
       <div className="btn m-1 menu-horizontal flex-none">
         <details className="no-underline">
-          <summary>
+          <summary key={cat}>
             {" "}
             <strong>{cat}</strong>
           </summary>
 
           <ul className="bg-base-100 rounded-t-none p-2 bg-black text-[16px]">
             <li>
-              <a>
+              <a key={subCat}>
                 <strong>{subCat}</strong>
               </a>
             </li>

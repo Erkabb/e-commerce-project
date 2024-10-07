@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { toast } from "react-toastify";
-import RecoverPass from "@/app/recover.pass/page";
+import RecoverPass from "@/app/recover-pass/page";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/app/context/user-context";
 
