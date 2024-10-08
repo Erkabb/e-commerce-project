@@ -2,7 +2,7 @@
 
 import { Heart } from "lucide-react";
 import axios from "axios";
-import { Divide } from "lucide-react";
+
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -17,6 +17,7 @@ const ProductDetail = () => {
   });
   const [productsData, setProductsData] = useState<any[]>([]);
   const { id } = useParams();
+  const [rating, setRating] = useState(0);
   console.log("id", id);
   const fetchProductData = async () => {
     try {

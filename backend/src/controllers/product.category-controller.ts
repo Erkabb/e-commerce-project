@@ -39,9 +39,7 @@ export const productInfo = async (req: Request, res: Response) => {
 export const getAllProduct = async (req: Request, res: Response) => {
   try {
     const products = await Product.find({}).populate("category");
-    res
-      .status(200)
-      .json({ message: "success to get all product", products: products });
+    res.status(200).json({ message: "Got all products", products: products });
   } catch (error) {
     console.error(error);
     res.status(400).json({ message: "failed to get all product" });
@@ -56,6 +54,7 @@ export const deleteProduct = async (req: Request, res: Response) => {
 
 export const getProduct = async (req: Request, res: Response) => {
   const { pId } = req.params;
+  console.log("pId", pId);
   try {
     const product = await Product.findById(pId).populate("category");
     res.status(200).json({ message: "success", product: product });
