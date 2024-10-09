@@ -39,12 +39,12 @@ export const createCart = async (req: Request, res: Response) => {
 };
 
 export const getUsersCarts = async (req: Request, res: Response) => {
-  const { uid } = req.params;
-  console.log("uid:", uid);
+  const { id } = req.user;
+  console.log("uid:", id);
 
   try {
-    const usercarts = await Cart.findOne({ user: uid });
-    console.log("first", uid);
+    const usercarts = await Cart.findOne({ user: id });
+    console.log("first", id);
     if (!usercarts) {
       res.status(400).json({ message: "failed to get carts" });
     } else {

@@ -8,7 +8,9 @@ interface IMyReq extends Request {
 declare global {
   namespace Express {
     interface Request {
-      user: any;
+      user: {
+        id: string | object;
+      };
     }
   }
 }

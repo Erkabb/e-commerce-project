@@ -5,15 +5,19 @@ import axios from "axios";
 import { useParams } from "next/navigation";
 
 const Cart = () => {
-  const { uid } = useParams();
   const [carts, setCarts] = useState<any>({
     user: "",
     products: [],
   });
-  console.log("uid", uid);
+
   const fetchCartData = async () => {
     try {
-      const res = await axios.get(`http://localhost:8000/carts/${uid}`);
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`http://localhost:8000/carts/id`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
       console.log("carts", res.data.usercarts);
       setCarts(res.data.usercarts);
     } catch (error) {
@@ -22,7 +26,7 @@ const Cart = () => {
   };
   useEffect(() => {
     fetchCartData();
-  }, [uid]);
+  }, []);
   return (
     <div className="w-full h-full flex flex-col items-center my-10 gap-10">
       <div className="flex text-white gap-32">
@@ -51,11 +55,14 @@ const Cart = () => {
           <strong>Сагс</strong>
         </h1>
         <div className="w-[600px] h-[132px] flex  border border-2-slate-100 rounded-2xl shadow-md items-center justify-evenly">
-          <div>
-            <img src="" alt="" className="w-[120x] h-[100px] rounded-2xl" />
-          </div>
+          <img
+            src="https://s3-alpha-sig.figma.com/img/793e/eb33/5cdac94bd8a779bc3f3578fff70e9fab?Expires=1729468800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=monSf8T4tt7Zg4RjmkePbbNJtQxt1CsX4bZTXGzTWNltMsCac-t9wc7iE0V5-jEhGBf1d6dKt3mFmyBmVkpzPDJnIGLumF2erpSCbJZomBf7vU5~cLb10~h709yRKp7m98IGgwR9fea3NZXDxhQQ8se0JI1I3ACitgUPn0lKRFOdj~b9MNfrpzmjW5E7D75oNCb3M4wiC9QZTNHov0yOOkTnzyzZJYcElX4wMJTs2wgzBws88aJikKW5J-uDz5CJD1umikL7PxdsoHbu9JJD1wTRbBa5C1u2tyVrni1HllZfumP53ssgf7lK9PwsayXXpz3CfdbLourCUPHOC0IK4g__"
+            alt=""
+            className="w-[110px] h-[110px] rounded-2xl"
+          />
+
           <div className="flex flex-col gap-2 text-black">
-            <h1 className="">{carts.products[0]}</h1>
+            <h1 className=""></h1>
             <input
               type="number"
               className="w-[40px] h-[32px]"
