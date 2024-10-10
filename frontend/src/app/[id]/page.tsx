@@ -6,6 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 const ProductDetail = () => {
   const [productData, setProductData] = useState<any>({
@@ -18,6 +19,7 @@ const ProductDetail = () => {
   const [productsData, setProductsData] = useState<any[]>([]);
   const { id } = useParams();
   const [rating, setRating] = useState(0);
+
   console.log("id", id);
   const fetchProductData = async () => {
     try {
@@ -43,6 +45,66 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchProductsData();
   }, []);
+  interface Cart {
+    usercarts: {
+      user: string;
+      products: [];
+    };
+  }
+  function handleClick():
+    | import("react").MouseEventHandler<HTMLButtonElement>
+    | undefined {
+    const router = useRouter();
+    const [carts, setCarts] = useState<Cart[]>([]);
+    const fetchCartData = async () => {
+      try {
+        const token = localStorage.getItem("token");
+        const res = await fetch(`http://localhost:8000/carts/id`, {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        });
+
+        const cart = await res.json();
+
+        setCarts(cart.usercarts.products);
+        console.log(";;", cart);
+        // router.push("/product-cart");
+      } catch (error) {
+        console.log("couldn't get cart", error);
+      }
+    };
+
+    useEffect(() => {
+      fetchCartData();
+    }, []);
+    return;
+  }
+
+  // const handleClick = () => {
+  //   const [carts, setCarts] = useState<Cart[]>([]);
+  //   const fetchCartData = async () => {
+  //     try {
+  //       const token = localStorage.getItem("token");
+  //       const res = await fetch(`http://localhost:8000/carts/id`, {
+  //         headers: {
+  //           Authorization: `Bearer ${token}`,
+  //         },
+  //       });
+
+  //       const cart = await res.json();
+
+  //       setCarts(cart.usercarts.products);
+  //       console.log(";;", cart);
+  //     } catch (error) {
+  //       console.log("couldn't get cart", error);
+  //     }
+  //   };
+
+  //   useEffect(() => {
+  //     fetchCartData();
+  //   }, []);
+  // };
 
   return (
     <div className="w-full h-full flex flex-col items-center my-10">
@@ -65,7 +127,10 @@ const ProductDetail = () => {
           <h1 className="text-[22px]">
             <strong>{productData.price}₮</strong>
           </h1>
-          <button className="btn w-[175px] h-[35px] bg-blue-600 rounded-3xl text-white">
+          <button
+            className="btn w-[175px] h-[35px] bg-blue-600 rounded-3xl text-white"
+            onClick={handleClick()}
+          >
             <strong>Add to cart</strong>
           </button>
         </div>

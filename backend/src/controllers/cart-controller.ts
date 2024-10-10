@@ -43,7 +43,9 @@ export const getUsersCarts = async (req: Request, res: Response) => {
   console.log("uid:", id);
 
   try {
-    const usercarts = await Cart.findOne({ user: id });
+    const usercarts = await Cart.findOne({ user: id }).populate(
+      "products.product"
+    );
     console.log("first", id);
     if (!usercarts) {
       res.status(400).json({ message: "failed to get carts" });

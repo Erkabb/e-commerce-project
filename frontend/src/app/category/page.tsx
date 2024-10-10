@@ -1,4 +1,4 @@
-import Products from "./products";
+import Products from "./allproducts";
 import Sidebar from "./sidebar";
 
 const Category = () => {

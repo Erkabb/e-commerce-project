@@ -34,19 +34,19 @@ const Header = () => {
         </div>
         <div className="flex gap-4 items-center">
           <Link href={"/product-cart"}>
-            <ShoppingCart className="cart" />
+            <ShoppingCart className="icon" />
           </Link>
           <Link href={"/wishlist"}>
-            <Heart className="cart" />
+            <Heart className="icon" />
           </Link>
           {user && (
             <div className="flex gap-2">
               <Link href={"/userprofile"}>
-                <User className="cart" />
+                <User className="icon" />
               </Link>
               <Link href="/login">
                 <LogOut
-                  className="cart"
+                  className="icon"
                   onClick={() => {
                     localStorage.clear();
                   }}

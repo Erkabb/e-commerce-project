@@ -14,9 +14,9 @@ const Footer = () => {
           <img src="./Vector.png" alt="" />
         </div>
         <div className="text-white flex gap-5">
-          <Phone className="cart" />
+          <Phone className="icon" />
           <p>(976)7007-1234</p>
-          <Mail className="cart" />
+          <Mail className="icon" />
           <p>contact@ecommerce.mn</p>
         </div>
       </div>
@@ -26,10 +26,10 @@ const Footer = () => {
           <p>2024 Ecommerce MN</p>
         </div>
         <div className="flex gap-5">
-          <Facebook className="cart" />
-          <Instagram className="cart" />
-          <Linkedin className="cart" />
-          <Twitter className="cart" />
+          <Facebook className="icon" />
+          <Instagram className="icon" />
+          <Linkedin className="icon" />
+          <Twitter className="icon" />
         </div>
       </div>
     </footer>
