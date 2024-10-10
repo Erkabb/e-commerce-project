@@ -65,15 +65,14 @@ export const deleteCart = async (req: Request, res: Response) => {
   console.log("uid", uid);
   console.log("pid:", pid);
   try {
-    const userID = await Cart.findOne({ user: uid });
-    console.log("userid", userID);
-    if (!userID) {
-      res.status(400).json({ message: "delete cart" });
-    } else {
-      const rmProduct = userID.deleteOne({ product: pid });
-      console.log("product pid", pid);
-      res.status(200).json({ message: "cart deleted", rm: rmProduct });
+    const finduserId = await Cart.findOne({ user: uid });
+    console.log("userid", finduserId);
+    if (!finduserId) {
+      res.status(400).json({ message: "cart not found" });
     }
+    const productIndex = finduserId.products.findIndex((item) => {
+      item.product.toString === pid;
+    });
   } catch (error) {
     res.status(400).json({ message: "couldn't delete cart", error });
   }
