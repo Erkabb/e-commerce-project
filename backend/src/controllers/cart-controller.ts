@@ -70,9 +70,7 @@ export const deleteCart = async (req: Request, res: Response) => {
     if (!finduserId) {
       res.status(400).json({ message: "cart not found" });
     }
-    const productIndex = finduserId.products.findIndex((item) => {
-      item.product.toString === pid;
-    });
+    // const productIndex = finduserId.products.findIndex((item) => item.product.toString === pid);
   } catch (error) {
     res.status(400).json({ message: "couldn't delete cart", error });
   }
