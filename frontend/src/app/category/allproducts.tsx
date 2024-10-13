@@ -30,9 +30,9 @@ const Products = () => {
                 className="rounded-2xl h-[320px]"
               />
             </figure>
-            <div className="card-body w-full px-5 text-[20px] text-start flex items-center justify-between ">
+            <div className=" w-[240px] card-body pl-2 text-[20px] text-start flex items-center justify-between ">
               <div>
-                <h2 className="card-title ">{product.name}</h2>
+                <h2 className="card-title">{product.name}</h2>
                 <p>
                   <strong>{product.price}₮</strong>
                 </p>
