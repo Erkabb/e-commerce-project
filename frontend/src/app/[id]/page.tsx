@@ -54,30 +54,6 @@ const ProductDetail = () => {
   function handleClick():
     | import("react").MouseEventHandler<HTMLButtonElement>
     | undefined {
-    const router = useRouter();
-    const [carts, setCarts] = useState<Cart[]>([]);
-    const fetchCartData = async () => {
-      try {
-        const token = localStorage.getItem("token");
-        const res = await fetch(`http://localhost:8000/carts/id`, {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-
-        const cart = await res.json();
-
-        setCarts(cart.usercarts.products);
-        console.log(";;", cart);
-        // router.push("/product-cart");
-      } catch (error) {
-        console.log("couldn't get cart", error);
-      }
-    };
-
-    useEffect(() => {
-      fetchCartData();
-    }, []);
     return;
   }
 

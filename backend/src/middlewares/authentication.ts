@@ -20,12 +20,14 @@ export const authentication = (
   next: NextFunction
 ) => {
   if (!req.headers.authorization) {
+    console.log("user:", req.user);
     return res
       .status(401)
       .json({ message: "Та энэ үйлдлийг хийхийн тулд нэвтэрнэ үү." });
   }
   const token = req.headers.authorization?.split(" ")[1];
   const user = decodeToken(token);
+  console.log("token", token);
   req.user = user;
   next();
 };

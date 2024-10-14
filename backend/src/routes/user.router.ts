@@ -10,7 +10,7 @@ import {
 } from "../controllers/user-controller";
 
 const router = Router();
-router.route("/currentuser").get(authentication, getCurrentUser);
+router.route("/current-user").get(authentication, getCurrentUser);
 router.route("/allusers").get(getAllUsers);
 router.route("/verify-password").post(verifyPassword);
 router.route("/forgetpassword").post(forgetPassword);

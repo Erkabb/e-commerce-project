@@ -39,7 +39,7 @@ const Header = () => {
           <Link href={"/wishlist"}>
             <Heart className="icon" />
           </Link>
-          {user && (
+          {!user && (
             <div className="flex gap-2">
               <Link href={"/userprofile"}>
                 <User className="icon" />
@@ -54,7 +54,7 @@ const Header = () => {
               </Link>
             </div>
           )}
-          {!user && (
+          {user && (
             <div className="flex gap-2">
               <Link href={"/signup"}>
                 <button className="text-white btn w-[100px] h-[40px]  border-2 border-blue-700  rounded-3xl">

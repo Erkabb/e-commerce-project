@@ -2,8 +2,35 @@
 import { ChangeEvent, useEffect, useState } from "react";
 import Sidebar from "./sidebar";
 import axios from "axios";
+import { useParams } from "next/navigation";
 
 const UserProfile = () => {
+  const [userData, setUserData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    cellphone: "",
+    pfp: "",
+    address: "",
+  });
+  const fetchUserData = async () => {
+    try {
+      const token = localStorage.getItem("token");
+      const res = await axios.get(`http://localhost:8000/users/current-user`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log("token", token);
+      setUserData(res.data.user);
+      console.log("userinfo:", res.data.user);
+    } catch (error) {
+      console.log("couldn't get user's info", error);
+    }
+  };
+  useEffect(() => {
+    fetchUserData();
+  }, []);
   return (
     <div className="flex my-96 justify-center gap-40 items-start">
       <Sidebar />
@@ -11,25 +38,35 @@ const UserProfile = () => {
         <h1 className="text-[20px]">
           <strong>Хэрэглэгчийн хэсэг</strong>{" "}
         </h1>
+
         <div className="border-t-2 border-slate-200 flex flex-col gap-10 pt-10 text-[18px]">
           <label className="input input-bordered flex items-center gap-2">
             <strong>Нэр</strong>
-            <input type="text" className="grow client" placeholder="Нэр" />
+            <input
+              type="text"
+              className="grow client"
+              value={userData.firstname}
+            />{" "}
           </label>
+
           <label className="input input-bordered flex items-center gap-2">
             <strong>Овог</strong>
-            <input type="text" className="grow client" placeholder="Овог" />
+            <input
+              type="text"
+              className="grow client"
+              value={userData.lastname}
+            />
           </label>
           <label className="input input-bordered flex items-center gap-2">
             <strong>Имэйл</strong>
-            <input type="text" className="grow client" placeholder="" />
+            <input type="text" className="grow client" value={userData.email} />
           </label>
           <label className="input input-bordered flex items-center gap-2">
             <strong>Утасны дугаар</strong>
             <input
               type="text"
               className="grow client"
-              placeholder="Утасны дугаар"
+              value={userData.cellphone}
             />
           </label>
           <label className="input input-bordered flex items-center gap-2">
