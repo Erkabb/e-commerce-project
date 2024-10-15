@@ -6,7 +6,9 @@ import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import Cart from "../product-cart/page";
+import { useUser } from "../context/user-context";
+import { toast } from "react-toastify";
 
 const ProductDetail = () => {
   const [productData, setProductData] = useState<any>({
@@ -18,7 +20,8 @@ const ProductDetail = () => {
   });
   const [productsData, setProductsData] = useState<any[]>([]);
   const { id } = useParams();
-  const [rating, setRating] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(0);
+  const { user } = useUser();
 
   console.log("id", id);
   const fetchProductData = async () => {
@@ -45,42 +48,23 @@ const ProductDetail = () => {
   useEffect(() => {
     fetchProductsData();
   }, []);
-  interface Cart {
-    usercarts: {
-      user: string;
-      products: [];
-    };
-  }
-  function handleClick():
-    | import("react").MouseEventHandler<HTMLButtonElement>
-    | undefined {
-    return;
-  }
 
-  // const handleClick = () => {
-  //   const [carts, setCarts] = useState<Cart[]>([]);
-  //   const fetchCartData = async () => {
-  //     try {
-  //       const token = localStorage.getItem("token");
-  //       const res = await fetch(`http://localhost:8000/carts/id`, {
-  //         headers: {
-  //           Authorization: `Bearer ${token}`,
-  //         },
-  //       });
+  const handleAddToCart = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:8000/carts/create-cart`,
+        {
+          userId: user?._id,
+          productId: id,
+          quantity: productQuantity,
+        }
+      );
 
-  //       const cart = await res.json();
-
-  //       setCarts(cart.usercarts.products);
-  //       console.log(";;", cart);
-  //     } catch (error) {
-  //       console.log("couldn't get cart", error);
-  //     }
-  //   };
-
-  //   useEffect(() => {
-  //     fetchCartData();
-  //   }, []);
-  // };
+      toast.success("added to cart", { autoClose: 60 });
+    } catch (error) {
+      toast.error("couldn't add to cart", { autoClose: 60 });
+    }
+  };
 
   return (
     <div className="w-full h-full flex flex-col items-center my-10">
@@ -105,7 +89,7 @@ const ProductDetail = () => {
           </h1>
           <button
             className="btn w-[175px] h-[35px] bg-blue-600 rounded-3xl text-white"
-            onClick={handleClick()}
+            onClick={handleAddToCart}
           >
             <strong>Add to cart</strong>
           </button>

@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 export const generateToken = (playload: object) => {
   return jwt.sign(playload, process.env.JWT_TOKEN_PASSWORD || "", {
-    expiresIn: "12h",
+    expiresIn: "7d",
   });
 };
 export const decodeToken = (token: string) => {

@@ -8,7 +8,7 @@ import {
 import { authentication } from "../middlewares/authentication";
 
 const cartRoute = Router();
-cartRoute.route("/").post(createCart);
+cartRoute.route("/create-cart").post(createCart);
 cartRoute.route("/id").get(authentication, getUsersCarts);
 cartRoute.route("/:uid/:pid").delete(deleteCart);
 export default cartRoute;

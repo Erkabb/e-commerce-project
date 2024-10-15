@@ -10,7 +10,7 @@ import { useUser } from "@/app/context/user-context";
 
 const Login = () => {
   const router = useRouter();
-  const { setUser} = useUser();
+  const { setUser } = useUser();
   const [userData, setUserData] = useState({
     email: "",
     password: "",
@@ -26,7 +26,7 @@ const Login = () => {
         toast.success("Signed in ", { autoClose: 1000 });
         const { token, user } = response.data;
         localStorage.setItem("token", token);
-       
+
         setUser(user);
         router.push("/home");
       }

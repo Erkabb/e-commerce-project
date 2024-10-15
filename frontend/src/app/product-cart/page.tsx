@@ -2,8 +2,6 @@
 import React, { RefAttributes, useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import axios from "axios";
-import { useParams } from "next/navigation";
-import { Button, ButtonProps } from "@/components/ui/button";
 
 interface Cart {
   usercarts: {
