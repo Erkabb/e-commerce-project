@@ -1,35 +1,62 @@
 "use client";
 
 import axios from "axios";
-
-import { createContext, useContext, useState } from "react";
-import { configureStore } from "@reduxjs/toolkit";
-import { Provider } from "react-redux";
-
-import Products from "../category/allproducts";
-import ProductDetail from "../[id]/page";
+import React, { useContext, useState, createContext, useEffect } from "react";
+import { toast } from "sonner";
 
 interface IUser {
   _id: string;
-  firstname: string;
   email: string;
 }
 
-interface IContext {
+interface IUserContext {
   user: IUser | null;
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
+  loading: boolean;
+  setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const UserContext = createContext<IContext>({
+export const UserContext = createContext<IUserContext>({
   user: null,
   setUser: () => {},
+  loading: true,
+  setIsLoggedIn: () => false,
 });
 
-const UserProvider = ({ children }: { children: React.ReactNode }) => {
+export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUser | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [loggedIn, setIsLoggedIn] = useState(false);
+
+  const getCurrentUser = async () => {
+    try {
+      const userToken = localStorage.getItem("token");
+      if (userToken) {
+        const response = await axios.get(
+          `http:localhost:8000/users/current-user`,
+          {
+            headers: { Authorization: `Bearer ${userToken}` },
+          }
+        );
+        if (response.status === 200) {
+          setUser(response.data.user);
+        }
+      } else {
+        setUser(null);
+      }
+    } catch (error) {
+      toast.error("Failed to get current user data");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    getCurrentUser();
+  }, [loggedIn]);
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, setUser, loading, setIsLoggedIn }}>
       {children}
     </UserContext.Provider>
   );
@@ -40,6 +67,3 @@ export const useUser = () => {
 };
 
 export default UserProvider;
-function productsFetch(): any {
-  throw new Error("Function not implemented.");
-}

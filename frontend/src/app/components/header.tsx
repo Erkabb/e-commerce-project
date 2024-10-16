@@ -8,6 +8,7 @@ import axios from "axios";
 
 const Header = () => {
   const [user, setUser] = useState(false);
+  const [category, setCategory] = useState({});
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -16,17 +17,17 @@ const Header = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-    
+
       setUser(res.data.user);
- 
     } catch (error) {
       console.log("couldn't change header", error);
     }
-   
-  }
+  };
   useEffect(() => {
     fetchUserData();
-  },[])
+  }, []);
+
+  const fetchCategories = async () => {};
   return (
     <header className="flex flex-col">
       <div className="w-full h-[88px] bg-black flex text-[16px] items-center justify-evenly">

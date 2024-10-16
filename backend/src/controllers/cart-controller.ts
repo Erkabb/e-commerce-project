@@ -1,40 +1,43 @@
 import { Request, Response } from "express";
 import Cart from "../models/cart.model";
-import User from "../models/user.model";
 
 export const createCart = async (req: Request, res: Response) => {
   const { userId, productId, totalAmount, quantity } = req.body;
   try {
     const findUserCart = await Cart.findOne({ user: userId });
+
     if (!findUserCart) {
-      const createCart = await Cart.create({
+      const cart = await Cart.create({
         user: userId,
-        products: {
-          product: productId,
-          quantity,
-        },
+        products: { product: productId, quantity },
         totalAmount,
       });
-      return res
-        .status(200)
-        .json({ message: "User's cart created", createCart });
+      return res.status(200).json({
+        message: "created new cart",
+        cart,
+      });
     }
+
     const findDuplicated = findUserCart.products.findIndex(
-      (item) => item.product.toString() === productId
+      (item) => item.product === productId
     );
+
     if (findDuplicated > -1) {
       findUserCart.products[findDuplicated].quantity += quantity;
     } else {
       findUserCart.products.push({ product: productId, quantity });
     }
+
     const updatedCart = await findUserCart.save();
     res.status(200).json({
       message: "updated cart",
       updatedCart,
     });
   } catch (error) {
-    console.log("cart error:", error);
-    res.status(400).json({ message: "failed to read cart" });
+    console.log(error);
+    res.status(400).json({
+      message: "failed to read carts",
+    });
   }
 };
 

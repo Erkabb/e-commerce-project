@@ -5,8 +5,8 @@ import crypto from "crypto";
 
 export const getCurrentUser = async (req: Request, res: Response) => {
   const { id } = req.user;
-  const findUser = await User.findById(id);
-  res.status(200).json({ user: findUser, message: "success" });
+  const user = await User.findById(id);
+  res.status(200).json({ user: user, message: "success" });
 };
 export const getAllUsers = async (req: Request, res: Response) => {
   const { firstname, lastname, email } = req.body;

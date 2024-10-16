@@ -6,7 +6,7 @@ import axios from "axios";
 import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import Cart from "../product-cart/page";
+
 import { useUser } from "../context/user-context";
 import { toast } from "react-toastify";
 
@@ -19,16 +19,18 @@ const ProductDetail = () => {
     size: "",
   });
   const [productsData, setProductsData] = useState<any[]>([]);
+
   const { id } = useParams();
-  const [productQuantity, setProductQuantity] = useState(0);
+  const [productQuantity, setProductQuantity] = useState(1);
   const { user } = useUser();
 
-  console.log("id", id);
   const fetchProductData = async () => {
     try {
       const response = await axios.get(`http://localhost:8000/products/${id}`);
       console.log("one product data:", response.data.product);
-      setProductData(response.data.product);
+      if (response.status === 200) {
+        setProductData(response.data.product);
+      }
     } catch (error) {
       console.log("get one product is failed", error);
     }
@@ -55,11 +57,16 @@ const ProductDetail = () => {
         `http://localhost:8000/carts/create-cart`,
         {
           userId: user?._id,
-          productId: id,
+          product: id,
           quantity: productQuantity,
         }
       );
 
+      if (response.status === 200) {
+        console.log("quantit", productQuantity);
+        console.log("user id", response.data.userId);
+        console.log("product id", response.data.product);
+      }
       toast.success("added to cart", { autoClose: 60 });
     } catch (error) {
       toast.error("couldn't add to cart", { autoClose: 60 });
@@ -83,7 +90,26 @@ const ProductDetail = () => {
             <Heart />
           </h1>
           <p className="text-[16px]">{productData.description}</p>
-          <button>{productData.size}</button>
+          <div className="flex gap-3">
+            <button
+              className="w-[30px] h-[30px] rounded-full border-2 border-slate-300"
+              onClick={() => setProductQuantity(productQuantity + 1)}
+            >
+              +
+            </button>
+            <p>{productQuantity}</p>
+            <button
+              className="w-[30px] h-[30px] rounded-full border-2 border-slate-300"
+              onClick={() => setProductQuantity(productQuantity - 1)}
+            >
+              -
+            </button>
+          </div>
+          {/* {productData.size?.map((size: any) => (
+            <button className="w-[30px] h-[30px] rounded-full border-2 border-slate-300">
+              {size[0]}
+            </button>
+          ))} */}
           <h1 className="text-[22px]">
             <strong>{productData.price}₮</strong>
           </h1>

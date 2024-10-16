@@ -15,7 +15,12 @@ export const ClassOfProducts = async (req: Request, res: Response) => {
     res.status(404).json({ message: "Failed", error: error });
   }
 };
+export const getAllCategories = async (req: Request, res: Response) => {
+  const { name } = req.body;
 
+  const categories = await Category.findOne(name);
+  res.status(200).json({ message: "succesfull", category: categories });
+};
 export const productInfo = async (req: Request, res: Response) => {
   try {
     const { name, description, price, size, images, quantity, category } =

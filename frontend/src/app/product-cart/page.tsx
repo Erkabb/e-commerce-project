@@ -14,27 +14,33 @@ const Cart = () => {
   const [carts, setCarts] = useState<Cart[]>([]);
   const [step, setStep] = useState(1);
   const [isChecked, setIsChecked] = useState(false);
+  const [productQuantity, setProductQuantity] = useState(1);
+
   const fetchCartData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:8000/carts/id`, {
+      const res = await fetch(`http://localhost:8000/carts/getcart`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
 
       const cart = await res.json();
+      if (res.status === 200) {
+        setCarts(cart.usercarts.products);
 
-      setCarts(cart.usercarts.products);
-      console.log(";;", cart);
+        console.log(";;", cart);
+      }
     } catch (error) {
       console.log("couldn't get cart", error);
     }
   };
+  console.log("carts:", carts);
 
   useEffect(() => {
     fetchCartData();
   }, []);
+
   const handleChange = () => {
     if (isChecked === true) {
       setStep(step + 1);
@@ -42,6 +48,7 @@ const Cart = () => {
       setStep(step - 1);
     }
   };
+
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
@@ -65,9 +72,11 @@ const Cart = () => {
       console.log("couldn't get user's info", error);
     }
   };
+
   useEffect(() => {
     fetchUserData();
   }, []);
+
   return (
     <div className="w-full h-full flex flex-col items-center my-10 gap-10">
       <div className="flex text-black gap-32 text-[20px]">
@@ -109,12 +118,21 @@ const Cart = () => {
                     <h1 className="" key={prod.id}>
                       <strong>{prod.product.name}</strong>
                     </h1>
-                    <input
-                      type="number"
-                      className="w-[40px] h-[32px]"
-                      placeholder="1"
-                    />
-
+                    <div className="flex gap-3">
+                      <button
+                        className="w-[30px] h-[30px] rounded-full border-2 border-slate-300"
+                        onClick={() => setProductQuantity(productQuantity + 1)}
+                      >
+                        +
+                      </button>
+                      <p>{productQuantity}</p>
+                      <button
+                        className="w-[30px] h-[30px] rounded-full border-2 border-slate-300"
+                        onClick={() => setProductQuantity(productQuantity - 1)}
+                      >
+                        -
+                      </button>
+                    </div>
                     <h1 className="text-[18px]">
                       <strong>{prod.product.price}₮</strong>
                     </h1>

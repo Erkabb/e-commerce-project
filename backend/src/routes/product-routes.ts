@@ -5,6 +5,7 @@ import {
   getAllProduct,
   deleteProduct,
   getProduct,
+  getAllCategories,
 } from "../controllers/product.category-controller";
 const productandclasslistRouter = Router();
 
@@ -13,5 +14,6 @@ productandclasslistRouter.route("/category").post(ClassOfProducts);
 productandclasslistRouter.route("/allproducts").get(getAllProduct);
 productandclasslistRouter.route("/:id").delete(deleteProduct);
 productandclasslistRouter.route("/:pId").get(getProduct);
+productandclasslistRouter.route("/get-category").get(getAllCategories);
 
 export default productandclasslistRouter;
