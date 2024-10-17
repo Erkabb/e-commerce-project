@@ -16,10 +16,10 @@ export const ClassOfProducts = async (req: Request, res: Response) => {
   }
 };
 export const getAllCategories = async (req: Request, res: Response) => {
-  const { name } = req.body;
-
-  const categories = await Category.findOne(name);
-  res.status(200).json({ message: "succesfull", category: categories });
+  Category.create(req.body);
+  res.status(200).json({
+    message: "All category is read successfully",
+  });
 };
 export const productInfo = async (req: Request, res: Response) => {
   try {

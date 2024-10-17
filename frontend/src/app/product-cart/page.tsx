@@ -15,6 +15,14 @@ const Cart = () => {
   const [step, setStep] = useState(1);
   const [isChecked, setIsChecked] = useState(false);
   const [productQuantity, setProductQuantity] = useState(1);
+  const [userData, setUserData] = useState({
+    firstname: "",
+    lastname: "",
+    email: "",
+    cellphone: "",
+    pfp: "",
+    address: "",
+  });
 
   const fetchCartData = async () => {
     try {
@@ -35,7 +43,6 @@ const Cart = () => {
       console.log("couldn't get cart", error);
     }
   };
-  console.log("carts:", carts);
 
   useEffect(() => {
     fetchCartData();
@@ -49,14 +56,6 @@ const Cart = () => {
     }
   };
 
-  const [userData, setUserData] = useState({
-    firstname: "",
-    lastname: "",
-    email: "",
-    cellphone: "",
-    pfp: "",
-    address: "",
-  });
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");

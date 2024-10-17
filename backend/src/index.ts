@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import authRoute from "./routes/auth-routes";
 import cors from "cors";
 import connectDB from "./config/db";
-import productandclasslistRouter from "./routes/product-routes";
+import product from "./routes/product-routes";
 import cartRoute from "./routes/cart-routes";
 import userRouter from "./routes/user.router";
 
@@ -17,7 +17,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api/v1/auth", authRoute);
 app.use("/users", userRouter);
-app.use("/products", productandclasslistRouter);
+app.use("/products", product);
 app.use("/carts", cartRoute);
 
 app.get("/", async (req: Request, res: Response) => {

@@ -19,7 +19,6 @@ const ProductDetail = () => {
     size: "",
   });
   const [productsData, setProductsData] = useState<any[]>([]);
-
   const { id } = useParams();
   const [productQuantity, setProductQuantity] = useState(1);
   const { user } = useUser();
@@ -35,9 +34,11 @@ const ProductDetail = () => {
       console.log("get one product is failed", error);
     }
   };
+
   useEffect(() => {
     fetchProductData();
   }, [id]);
+
   const fetchProductsData = async () => {
     try {
       const res = await axios.get(`http://localhost:8000/products/allproducts`);
@@ -47,6 +48,7 @@ const ProductDetail = () => {
       console.log("error", error);
     }
   };
+
   useEffect(() => {
     fetchProductsData();
   }, []);
@@ -56,18 +58,19 @@ const ProductDetail = () => {
       const response = await axios.post(
         `http://localhost:8000/carts/create-cart`,
         {
-          userId: user?._id,
+          user: user?._id,
           product: id,
           quantity: productQuantity,
         }
       );
 
       if (response.status === 200) {
-        console.log("quantit", productQuantity);
-        console.log("user id", response.data.userId);
-        console.log("product id", response.data.product);
+        console.log("added to cart", id);
+        console.log("first", response.data);
+        toast.success("added to cart", { autoClose: 60 });
+      } else {
+        console.log("user not found");
       }
-      toast.success("added to cart", { autoClose: 60 });
     } catch (error) {
       toast.error("couldn't add to cart", { autoClose: 60 });
     }

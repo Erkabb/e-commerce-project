@@ -7,13 +7,13 @@ import {
   getProduct,
   getAllCategories,
 } from "../controllers/product.category-controller";
-const productandclasslistRouter = Router();
+const product = Router();
 
-productandclasslistRouter.route("/product").post(productInfo);
-productandclasslistRouter.route("/category").post(ClassOfProducts);
-productandclasslistRouter.route("/allproducts").get(getAllProduct);
-productandclasslistRouter.route("/:id").delete(deleteProduct);
-productandclasslistRouter.route("/:pId").get(getProduct);
-productandclasslistRouter.route("/get-category").get(getAllCategories);
+product.route("/product").post(productInfo);
+product.route("/category").post(ClassOfProducts);
+product.route("/allproducts").get(getAllProduct);
+product.route("/:id").delete(deleteProduct);
+product.route("/:pId").get(getProduct);
+product.route("/get-category").get(getAllCategories);
 
-export default productandclasslistRouter;
+export default product;

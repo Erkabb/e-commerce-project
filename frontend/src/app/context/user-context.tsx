@@ -2,7 +2,7 @@
 
 import axios from "axios";
 import React, { useContext, useState, createContext, useEffect } from "react";
-import { toast } from "sonner";
+import { toast } from "react-toastify";
 
 interface IUser {
   _id: string;
@@ -12,20 +12,17 @@ interface IUser {
 interface IUserContext {
   user: IUser | null;
   setUser: React.Dispatch<React.SetStateAction<IUser | null>>;
-  loading: boolean;
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export const UserContext = createContext<IUserContext>({
   user: null,
   setUser: () => {},
-  loading: true,
   setIsLoggedIn: () => false,
 });
 
 export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   const [user, setUser] = useState<IUser | null>(null);
-  const [loading, setLoading] = useState(true);
   const [loggedIn, setIsLoggedIn] = useState(false);
 
   const getCurrentUser = async () => {
@@ -33,11 +30,12 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
       const userToken = localStorage.getItem("token");
       if (userToken) {
         const response = await axios.get(
-          `http:localhost:8000/users/current-user`,
+          `http://localhost:8000/users/current-user`,
           {
             headers: { Authorization: `Bearer ${userToken}` },
           }
         );
+        console.log("user", response.data);
         if (response.status === 200) {
           setUser(response.data.user);
         }
@@ -45,9 +43,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(null);
       }
     } catch (error) {
-      toast.error("Failed to get current user data");
-    } finally {
-      setLoading(false);
+      toast.error("user not found", { autoClose: 60 });
     }
   };
 
@@ -56,7 +52,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
   }, [loggedIn]);
 
   return (
-    <UserContext.Provider value={{ user, setUser, loading, setIsLoggedIn }}>
+    <UserContext.Provider value={{ user, setUser, setIsLoggedIn }}>
       {children}
     </UserContext.Provider>
   );
