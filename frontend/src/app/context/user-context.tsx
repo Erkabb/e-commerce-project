@@ -43,7 +43,7 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
         setUser(null);
       }
     } catch (error) {
-      toast.error("user not found", { autoClose: 60 });
+      console.log("user not found", { autoClose: 60 });
     }
   };
 

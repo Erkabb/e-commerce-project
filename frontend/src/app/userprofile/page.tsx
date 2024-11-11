@@ -1,8 +1,7 @@
 "use client";
-import { ChangeEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Sidebar from "./sidebar";
 import axios from "axios";
-import { useParams } from "next/navigation";
 
 const UserProfile = () => {
   const [userData, setUserData] = useState({

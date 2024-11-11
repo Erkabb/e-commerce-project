@@ -8,7 +8,7 @@ import { Phone } from "lucide-react";
 import { Twitter } from "lucide-react";
 const Footer = () => {
   return (
-    <footer className="w-full h-full bg-black flex flex-col">
+    <footer className="w-full h-2/6 bg-black flex flex-col">
       <div className=" h-[250px] flex justify-between mx-40 pt-24 border-b-2 border-slate-800">
         <div>
           <img src="./Vector.png" alt="" />

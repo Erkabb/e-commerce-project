@@ -3,24 +3,7 @@ import { Request, Response } from "express";
 import Product from "../models/products.model";
 import { Category } from "../models/category.model";
 
-export const ClassOfProducts = async (req: Request, res: Response) => {
-  try {
-    const { name, description } = req.body;
-    const createCategory = await Category.create({
-      name,
-      description,
-    });
-    res.status(202).json({ message: "category added", class: createCategory });
-  } catch (error) {
-    res.status(404).json({ message: "Failed", error: error });
-  }
-};
-export const getAllCategories = async (req: Request, res: Response) => {
-  Category.create(req.body);
-  res.status(200).json({
-    message: "All category is read successfully",
-  });
-};
+
 export const productInfo = async (req: Request, res: Response) => {
   try {
     const { name, description, price, size, images, quantity, category } =
@@ -68,3 +51,4 @@ export const getProduct = async (req: Request, res: Response) => {
     res.status(400).json({ message: "failed" });
   }
 };
+

@@ -6,6 +6,7 @@ import connectDB from "./config/db";
 import product from "./routes/product-routes";
 import cartRoute from "./routes/cart-routes";
 import userRouter from "./routes/user.router";
+import catRouter from "./routes/category-routes";
 
 dotenv.config();
 const PORT = process.env.PORT || "";
@@ -19,6 +20,7 @@ app.use("/api/v1/auth", authRoute);
 app.use("/users", userRouter);
 app.use("/products", product);
 app.use("/carts", cartRoute);
+app.use("/category", catRouter);
 
 app.get("/", async (req: Request, res: Response) => {
   res.send("E-commerce api server");

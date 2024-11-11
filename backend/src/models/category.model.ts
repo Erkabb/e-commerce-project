@@ -1,19 +1,23 @@
 import { model, Schema } from "mongoose";
 
 interface ICategory {
-  name: string;
-  description: string;
+  season: String,
+  material: String,
+  size:String,
+ 
 }
 const categorySchema = new Schema<ICategory>(
   {
-    name: {
-      type: String,
-      required: true,
-    },
-    description: {
-      type: String,
-      default: "category comment",
-    },
+    
+      season: {
+        type: String,
+      },
+      material: {
+        type:String
+      },
+      size: {
+        type:String
+      },
   },
   {
     timestamps: true,
@@ -21,3 +25,4 @@ const categorySchema = new Schema<ICategory>(
 );
 
 export const Category = model<ICategory>("Category", categorySchema);
+export default Category;

@@ -9,7 +9,7 @@ import { Twitter } from "lucide-react";
 const Footer = () => {
   return (
     <footer className="w-full h-full bg-black flex flex-col">
-      <div className=" h-[250px] flex justify-between mx-40 pt-24 border-b-2 border-slate-800">
+      <div className=" h-[200px] flex justify-between mx-40 pt-24 border-b-2 border-slate-800">
         <div>
           <img src="./Vector.png" alt="" />
         </div>
@@ -20,7 +20,7 @@ const Footer = () => {
           <p>contact@ecommerce.mn</p>
         </div>
       </div>
-      <div className="flex justify-between mx-40 py-36">
+      <div className="flex justify-between mx-40 py-10">
         <div className="text-[14px] text-white flex items-center">
           <Copyright className="cart" size={13} />
           <p>2024 Ecommerce MN</p>

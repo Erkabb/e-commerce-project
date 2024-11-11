@@ -33,7 +33,7 @@ export default function Home() {
     </div>
     <div className="text-center">
       <p>Not a member?</p>
-      <Link href={""}>Sign up</Link>
+      <Link href={"/signup"}>Sign up</Link>
     </div>
   </div>
 }

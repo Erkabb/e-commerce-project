@@ -1,4 +1,4 @@
-import { Request, Response } from "express";
+ import { Request, Response } from "express";
 import Cart from "../models/cart.model";
 
 export const createCart = async (req: Request, res: Response) => {
@@ -19,7 +19,7 @@ export const createCart = async (req: Request, res: Response) => {
     }
 
     const findDuplicated = findUserCart.products.findIndex((item) => {
-      item.product.toString() === productId;
+      item.product === productId;
     });
 
     if (!findUserCart) {
@@ -80,6 +80,4 @@ export const deleteCart = async (req: Request, res: Response) => {
     res.status(400).json({ message: "couldn't delete cart", error });
   }
 };
-function id(String: StringConstructor): any {
-  throw new Error("Function not implemented.");
-}
+

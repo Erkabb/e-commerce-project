@@ -1,76 +1,52 @@
+"use client";
+
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 const Sidebar = () => {
+  const [category, setCategoryData] = useState<any []>([]);
+
+  const getCategories = async () => {
+    try {
+      const res = await axios.get(`http://localhost:8000/category/category`);
+      console.log("category", res.data.category);
+      setCategoryData(res.data.category);
+    } catch (error) {
+      console.log("error", error);
+    }
+  }
+
+  useEffect(() => {
+    getCategories();
+  }, []);
   return (
-    <div className="flex flex-wrap text-[18px] gap-5">
-      <div className="flex flex-col gap-2 text-[16px]">
+    <div className="flex flex-nowrap text-[18px] gap-5">
+       <div className="flex flex-col gap-2 text-[16px] text-black">
         <h1>
           <strong>Season</strong>
         </h1>
-
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Winter
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Spring
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Summer
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Autumn
-        </button>
+        {category?.map((season)=> <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+        {season.season} 
+        </button>)}
+         
       </div>
+     
       <div className="flex flex-col gap-2 text-[16px]">
         <h1>
           <strong>Material</strong>
         </h1>
-
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Jersey
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Faux
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Leather
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Cotton
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Silk
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Knit
-        </button>
+        {category?.map((material)=>   <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+        {material.material}
+        </button>)}
       </div>
       <div className="flex flex-col gap-2 text-[16px]">
         <h1>
           <strong>Size</strong>
         </h1>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          Free
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          XS
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          S
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          M
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          L
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          XL
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          XXL
-        </button>
-        <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
-          XXXL
-        </button>
+        {category?.map((size)=> <button className="btn h-[40px] shadow-lg rounded-xl border border-slate-300  hover:bg-slate-500 hover:text-white">
+         {size.size}
+        </button>)}
+     
       </div>
     </div>
   );
