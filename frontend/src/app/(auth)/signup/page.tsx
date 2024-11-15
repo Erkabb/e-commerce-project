@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -26,7 +26,7 @@ const Signup = () => {
     repassword: "",
   });
 
-  const checkFreelancer = () => {
+  const checkUser = () => {
     const { email, password } = userData;
     try {
       if (email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
@@ -71,7 +71,6 @@ const Signup = () => {
     } catch (error) {
       setIsChecked(false);
       console.error("There was an error signing up:", error);
-      toast.error("Алдаа гарлаа. Дахин оролдоно уу.");
     }
   };
 
@@ -94,16 +93,20 @@ const Signup = () => {
       console.error("Failed to signed up", error);
     }
   };
+
+  useEffect(() => {
+    checkUser();
+  }, [userData]);
   return (
-    <div className="w-full h-screen flex items-center justify-center">
-      <div className="w-[420px] h-[600px] flex flex-col gap-7 ">
-        <h1 className="text-center text-[30px]">
+    <section className="w-full h-full flex justify-center my-10">
+      <div className="w-[270px] flex flex-col gap-7 pb-10">
+        <h1 className="text-center text-lg">
           <strong>Бүртгүүлэх</strong>
         </h1>
-        <div className="flex flex-col gap-5 text-[22px]">
+        <div className="flex flex-col gap-5 ">
           <Input
             type="text"
-            className="input border-2 border-slate-100 h-[60px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100  rounded-2xl bg-white pl-2"
             placeholder="Нэр"
             onChange={(e) => {
               setUserData({ ...userData, firstname: e.target.value });
@@ -111,7 +114,7 @@ const Signup = () => {
           ></Input>
           <Input
             type="text"
-            className="input border-2 border-slate-100 h-[60px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100 rounded-2xl bg-white pl-2"
             placeholder="Овог"
             onChange={(e) => {
               setUserData({ ...userData, lastname: e.target.value });
@@ -120,7 +123,7 @@ const Signup = () => {
 
           <Input
             type="text"
-            className="input border-2 border-slate-100 h-[60px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100 rounded-2xl bg-white pl-2"
             placeholder="Имэйл хаяг"
             onChange={(e) => {
               setUserData({ ...userData, email: e.target.value });
@@ -133,10 +136,9 @@ const Signup = () => {
               ) : (
                 <></>
               )}
-
-          <Input
-           
-            className="border-2 border-slate-100 h-[60px] rounded-3xl bg-white pl-2"
+          <div className="relative">
+            <Input
+          className="border-2 border-slate-100 rounded-2xl bg-white pl-2 "
             value={userData.password}
             placeholder="Нууц үг"
             onChange={(e) => {
@@ -144,22 +146,23 @@ const Signup = () => {
             }}
             type={iseEyeOpen ? "text" : "password"} 
           ></Input>
-            {iseEyeOpen ? (
-                <FaRegEyeSlash
-                  className=""
-                  color="gray"
-                  onClick={() => setIsEyeOpen(false)}
-                />
-              ) : (
-                <FaRegEye
-                  className=""
-                  color="gray"
-                  onClick={() => setIsEyeOpen(true)}
-                />
-              )}
+           {iseEyeOpen ? (
+            <FaRegEyeSlash
+              className="absolute right-5 top-[12px]"
+              color="gray"
+              onClick={() => setIsEyeOpen(false)}
+            />
+          ) : (
+            <FaRegEye
+              className="absolute right-5 top-[12px]"
+              color="gray"
+              onClick={() => setIsEyeOpen(true)}
+            />
+          )}</div>
+          
           <Input
             type={iseEyeOpen ? "text" : "password"}
-            className="input border-2 border-slate-100  w-[420px] h-[60px] rounded-3xl bg-white pl-2"
+            className="input border-2 border-slate-100 rounded-2xl bg-white pl-2"
             placeholder="Нууц үг давтах"
             onChange={(e) => {
               setUserData({ ...userData, repassword: e.target.value });
@@ -197,17 +200,17 @@ const Signup = () => {
               </p>
             </div>
           <button
-            className="btn  w-[420px] h-[60px] bg-blue-700 border-2 rounded-3xl text-white text-[22px]"
+            className="btn h-[40px] bg-blue-700 border-2 rounded-2xl text-white"
             onClick={signUp}
           >
             Үүсгэх
           </button>
         </div>
        
-          <Link href={"/login"}> <button className="btn  w-[420px] h-[55px] bg-white border-2 border-blue-700 rounded-3xl text-blue-700 text-[22px]">Нэвтрэх </button></Link>
+          <Link href={"/login"}> <button className="btn w-[270px] h-[40px] bg-white border-2 border-blue-700 rounded-2xl text-blue-700">Нэвтрэх </button></Link>
        
       </div>
-    </div>
+    </section>
   );
 };
 

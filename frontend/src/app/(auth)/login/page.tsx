@@ -7,6 +7,7 @@ import { toast } from "react-toastify";
 import RecoverPass from "@/app/recover-pass/page";
 import { Button } from "@/components/ui/button";
 import { useUser } from "@/app/context/user-context";
+import { Input } from "@/components/ui/input";
 
 const Login = () => {
   const router = useRouter();
@@ -32,52 +33,51 @@ const Login = () => {
       }
     } catch (error) {
       console.error("failed to sign in", error);
-      toast.error("failed to sign in");
     }
   };
   return (
     <div className="h-screen flex items-center justify-center">
-      <div className="w-[420px] h-[300p] flex flex-col gap-5">
-        <h1 className="text-center text-[30px]">
+      <div className="w-[270px] flex flex-col gap-5">
+        <h1 className="text-center text-lg">
           <strong>Нэвтрэх</strong>
         </h1>
-        <div className="flex flex-col gap-5 text-[22px]">
-          <input
+        <div className="flex flex-col gap-5">
+          <Input
             type="text"
-            className="input  border-2 border-slate-100  w-[400px] h-[60px] rounded-3xl bg-white pl-2"
+            className="input max-w-full border-2 border-slate-100 rounded-2xl bg-white pl-2"
             placeholder="Имэйл хаяг"
             onChange={(e) => {
               setUserData({ ...userData, email: e.target.value });
             }}
           />
 
-          <input
+          <Input
             type="text"
-            className="input border-2 border-slate-100 rounded-3xl w-[400px] h-[60px]  bg-white pl-2"
+            className="input max-w-full border-2 border-slate-100 rounded-2xl  bg-white pl-2"
             placeholder="Нууц үг"
             onChange={(e) => {
               setUserData({ ...userData, password: e.target.value });
             }}
           />
 
-          <button
-            className="btn btn-wide bg-blue-700  w-[400px] h-[60px] border-2 rounded-3xl text-white"
+          <Button
+            className="btn max-w-full bg-blue-700  border-2 rounded-2xl text-white"
             onClick={logIn}
           >
             Нэвтрэх
-          </button>
+          </Button>
 
           <Link href={"/recover.pass"}>
-            <Button variant="link" className="text-[20px] text-center">
+            <Button variant="link" className="text-sm  max-w-full text-center">
               Нууц үг мартсан
             </Button>
           </Link>
         </div>
         <Link href={"/signup"}>
           {" "}
-          <button className="btn w-[400px] h-[60px] bg-white border-2 border-blue-700 rounded-2xl text-blue-700 text-[22px]">
+          <Button className="btn min-w-full bg-white border-2 border-blue-700 rounded-2xl text-blue-700">
             Бүртгүүлэх
-          </button>
+          </Button>
         </Link>
       </div>
     </div>

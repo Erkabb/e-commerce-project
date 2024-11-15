@@ -113,11 +113,11 @@ const ProductDetail = () => {
                     const currentRating = idx+1;
                     return (
                       <div>
-                      {/* <Select
+                      <Select
                       key={`first ${idx}`}
-                    //  type="radio"
+                     type="radio"
                      name="rating"
-                    //  value={currentRating}
+                     value={currentRating}
                      onClick={() => setRating(currentRating)}
                    >
                    <Heart
@@ -130,7 +130,7 @@ const ProductDetail = () => {
                      }
                             onClick={() => setHover(currentRating)}
                             onDoubleClick={()=>setHover(0)}
-                   /></Select> */}
+                   /></Select>
                </div>
                       
                     );

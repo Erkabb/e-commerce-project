@@ -3,6 +3,8 @@ import { User, ShoppingCart, Heart, Search, LogOut } from "lucide-react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const Header = () => {
   const [user, setUser] = useState(false);
@@ -41,39 +43,37 @@ const Header = () => {
 
   return (
     <header className="flex flex-col">
-      <div className="w-full max-md:h-[70px] bg-black flex text-[16px] items-center justify-evenly py-2">
-        <div className="flex gap-3 items-center">
-          <div className="flex gap-3">
-            <img src="./Vector.png" alt="" />
+      <div className="w-full max-md:h-[70px] bg-black flex text-sm items-center justify-evenly py-2">
+        <div className="flex gap-5 items-center ">
+          
             <Link href={"/home"}>
-              <p className="text-white ">
-                <strong>ECOMMERCE</strong>
-              </p>
+            <img src="./Vector.png" alt="" />
             </Link>
-          </div>
+    
           <Link href={"/category"}>
             <p className="text-white text-sm pb-1">
               <strong>Бүтээгдэхүүн</strong>
             </p>
           </Link>
         </div>
-        <div className="flex  rounded-3xl  text-slate-100 items-center gap-2">
+        <div className="flex rounded-2xl text-slate-100 items-center gap-2">
           <Search size={20}/>
-          <input
+          <Input
             type="text"
             placeholder="Бүтээгдэхүүн хайх"
-            className="grow  w-[300px] h-[40px] rounded-3xl bg-[#18181B] text-slate-100 pl-5"
+            className="grow  w-[300px] h-[35px] rounded-3xl bg-[#18181B] text-slate-100 pl-5"
           />
         </div>
         <div className="flex gap-4 items-center">
-          <Link href={"/product-cart"}>
+         
+          {user && (
+            <div className="flex gap-2">
+               <Link href={"/product-cart"}>
             <ShoppingCart className="icon" size={20}/>
           </Link>
           <Link href={"/wishlist"}>
             <Heart className="icon" size={20}/>
           </Link>
-          {user && (
-            <div className="flex gap-2">
               <Link href={"/userprofile"}>
                 <User className="icon" size={20}/>
               </Link>
@@ -90,27 +90,28 @@ const Header = () => {
           {!user && (
             <div className="flex gap-2">
               <Link href={"/signup"}>
-                <button className="text-white btn w-[100px] h-[40px]  border-2 border-blue-700  rounded-3xl">
+                <Button className=" btn text-white h-[35px]  border-2 border-blue-700  rounded-2xl hover:bg-blue-700">
                   Бүртгүүлэх
-                </button>
+                </Button>
               </Link>
               <Link href={"/login"}>
-                <button className=" btn w-[80px] h-[40px] border-1 bg-blue-700 rounded-3xl text-white">
+                <Button className=" btn h-[35px] border-1 bg-blue-700 rounded-2xl text-white  hover:border-2 hover:border-blue-700">
                   Нэвтрэх
-                </button>
+                </Button>
               </Link>
             </div>
           )}
         </div>
       </div>
-      <div className="w-[full] max-md:h-[50px] flex bg-black text-[24px] text-white justify-center gap-10">
+      {user && (  <div className="w-[full] max-md:h-[50px] flex bg-black text-[24px] text-white justify-center gap-10">
         {category.map((cat:any) => (<div className="dropdown py-2">
             <div className="btn m-1 menu-horizontal flex-none text-sm">
             <p><strong>{cat.name}</strong></p>
             </div>
           </div>
         ))}
-      </div>
+      </div>)}
+    
     </header>
   );
 };
