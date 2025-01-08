@@ -2,7 +2,7 @@ import { model, Schema } from "mongoose";
 
 interface ICart {
   user: Schema.Types.ObjectId;
-  products: [{ product: Schema.Types.ObjectId; quantity: Number }];
+  products: [{ product: Schema.Types.ObjectId; soldQuantity: Number; }];
   totalAmount: Number;
 }
 
@@ -11,6 +11,7 @@ const cartSchema = new Schema<ICart>(
     user: {
       type: Schema.Types.ObjectId,
       ref: "User",
+      required:true
     },
     products: [
       {
@@ -19,7 +20,7 @@ const cartSchema = new Schema<ICart>(
           ref: "Product",
         },
 
-        quantity: { type: Number },
+        soldQuantity: { type: Number },
       },
     ],
     totalAmount: {

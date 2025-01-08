@@ -1,27 +1,16 @@
 "use client";
-
-import axios from "axios";
-import React, { useEffect, useState } from "react";
-import { toast } from "react-toastify";
-import { useUser } from "../context/user-context";
+import React from "react";
 import Link from "next/link";
+import { useProducts } from "@/context/products-context";
+import Image from "next/image";
+import * as motion from "framer-motion/client"
+
 
 const MainContent = () => {
-  const [productData, setProductData] = useState<any[]>([]);
-  const AddProduct = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:8000/products/allproducts`
-      );
-      console.log("home page:", response.data.products);
-      setProductData(response.data.products);
-    } catch (error) {}
-  };
-  useEffect(() => {
-    AddProduct();
-  }, []);
-  return (
-    <main className="w-full ">
+    const {products }=useProducts();
+
+ return (
+    <main className="w-full flex flex-col gap-10 items-center pb-10">
      
       <div
         style={{
@@ -34,21 +23,29 @@ const MainContent = () => {
           <strong>120 000₮</strong>
         </p>
       </div>
-      <div className="flex flex-wrap gap-4 mx-96 my-10 ">
-      {productData?.map((prod) => ( <Link href={`/${prod._id}`} key={prod.id}>
-            <div className=" w-[247px] h-[386px] card bg-base-100 flex flex-col items-center">
-            <figure>
-              <img 
-                src={prod.images[0]}
-                alt=""
-                className="rounded-2xl h-[320px]" />
-            </figure>
-            <div className="w-[240px] card-body pl-2 text-[20px] text-start">
-              <h2 className="card-title ">{prod.name}</h2>
-              <p>
-                <strong>{prod.price}₮</strong>
-              </p></div>
-            </div>
+      <div className="flex flex-wrap gap-4 justify-center">
+      {products?.map((prod) => ( <Link href={`/${prod._id}`} key={prod._id}>
+        <motion.div
+        whileHover={{
+          scale:0.9
+        }}
+        className="card bg-base-100 w-[247px] rounded-2xl shadow-xl flex flex-col items-center relative">
+                <figure>
+                  <Image
+                    src={prod.images[0]}
+                    alt="Shoes"
+                    className="rounded-2xl h-[320px]"
+                    width={247}
+                    height={320}
+                />
+                </figure>
+                <div className="card-body w-full pl-5  p-3 text-sm text-start ">
+                  <h2 className="card-title ">{prod.name}</h2>
+                  <p>
+                    <strong>{prod.price}₮</strong>
+                  </p>
+                </div>
+              </motion.div>
          </Link>
         ))}
           </div>

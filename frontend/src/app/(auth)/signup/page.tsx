@@ -8,16 +8,18 @@ import { useRouter } from "next/navigation";
 import { FaRegEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 const Signup = () => {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState<boolean>(false);
   const [emailCheck, setEmailCheck] = useState<boolean>(false);
   const [passUpper, setPassUpper] = useState<boolean>(false);
   const [passLower, setPassLower] = useState<boolean>(false);
   const [passNumber, setPassNumber] = useState<boolean>(false);
   const [passSymbol, setPassSymbol] = useState<boolean>(false);
-  const [iseEyeOpen, setIsEyeOpen] = useState<boolean>(false);
+  const [isEyeOpen, setIsEyeOpen] = useState<boolean>(false);
   const [userData, setUserData] = useState({
     firstname: "",
     lastname: "",
@@ -76,26 +78,33 @@ const Signup = () => {
 
   const signUp = async () => {
     const { firstname, lastname, email, password, repassword } = userData;
+   
+    setIsLoading(true);
     if (password !== repassword) {
       toast.error("Нууц үг таарахгүй байна.");
       return;
     }
     try {
-      const response = await axios.post(
-        `http://localhost:8000/api/v1/auth/signup`,
-        { firstname, lastname, email, password }
-      );
+      const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+      const response = await axios.post(`${API_URL}/api/v1/auth/signup`, {
+        firstname,
+        lastname,
+        email,
+        password,
+      });
       if (response.status === 201) {
-        toast.success("Signed up", { autoClose: 1000 });
-        router.push("/login");
+                router.push("/login");
       }
     } catch (error) {
-      console.error("Failed to signed up", error);
-    }
+      console.error("Failed to sign up:", error);
+    } finally {
+      setIsLoading(false);
+    }   
   };
 
   useEffect(() => {
-    checkUser();
+    const debounceTimeout = setTimeout(checkUser, 300);
+    return () => clearTimeout(debounceTimeout);
   }, [userData]);
   return (
     <section className="w-full h-full flex justify-center my-10">
@@ -144,9 +153,9 @@ const Signup = () => {
             onChange={(e) => {
               setUserData({ ...userData, password: e.target.value });
             }}
-            type={iseEyeOpen ? "text" : "password"} 
+            type={isEyeOpen ? "text" : "password"} 
           ></Input>
-           {iseEyeOpen ? (
+           {isEyeOpen ? (
             <FaRegEyeSlash
               className="absolute right-5 top-[12px]"
               color="gray"
@@ -161,7 +170,7 @@ const Signup = () => {
           )}</div>
           
           <Input
-            type={iseEyeOpen ? "text" : "password"}
+            type={isEyeOpen ? "text" : "password"}
             className="input border-2 border-slate-100 rounded-2xl bg-white pl-2"
             placeholder="Нууц үг давтах"
             onChange={(e) => {
@@ -199,15 +208,16 @@ const Signup = () => {
                 • Тэмдэгт орсон байх
               </p>
             </div>
-          <button
-            className="btn h-[40px] bg-blue-700 border-2 rounded-2xl text-white"
-            onClick={signUp}
-          >
-            Үүсгэх
-          </button>
+            <Button
+  className="btn h-[40px] bg-blue-700 border-2 rounded-2xl text-white"
+  onClick={signUp}
+  disabled={isLoading || !isChecked}
+>
+{isLoading ? "Бүртгүүлж байна..." : "Үүсгэх"}
+</Button>
         </div>
        
-          <Link href={"/login"}> <button className="btn w-[270px] h-[40px] bg-white border-2 border-blue-700 rounded-2xl text-blue-700">Нэвтрэх </button></Link>
+          <Link href={"/login"}> <Button className="btn w-[270px] h-[40px] bg-white border-2 border-blue-700 rounded-2xl text-blue-700">Нэвтрэх </Button></Link>
        
       </div>
     </section>

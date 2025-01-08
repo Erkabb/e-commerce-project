@@ -1,12 +1,11 @@
 import { Request, Response } from "express";
 
 import Product from "../models/products.model";
-import { Category } from "../models/category.model";
 
 
 export const productInfo = async (req: Request, res: Response) => {
   try {
-    const { name, description, price, size, images, quantity, category } =
+    const { name, description, price, size, images, color, quantity, category } =
       req.body;
     const createProduct = await Product.create({
       name,
@@ -14,6 +13,7 @@ export const productInfo = async (req: Request, res: Response) => {
       price,
       size,
       images,
+      color,
       quantity,
       category,
     });

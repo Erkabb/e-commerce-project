@@ -5,7 +5,6 @@ import { generateToken } from "../utils/jwt";
 
 //mongoose=>odm=>object data mapping
 export const login = async (req: Request, res: Response) => {
-  // res.status(200).json({ message: "success" });
   const { email, password } = req.body;
   const user = await User.findOne({ email: email });
   if (!user) {

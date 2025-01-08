@@ -27,7 +27,7 @@
     "**/*.tsx",
     ".next/types/**/*.ts",
     "src/app/home/layout.jsx",
-    "src/app/context/user-context.tsx",
+    "src/context/user-context.tsx",
     "src/app/category",
     "src/app/userprofile",
     "src/app/[id]"

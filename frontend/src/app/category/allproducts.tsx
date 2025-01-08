@@ -1,41 +1,29 @@
 "use client";
-import axios from "axios";
 import { Heart } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
 import * as motion from "framer-motion/client"
+import { useProducts } from "@/context/products-context";
+import Image from "next/image";
 
 const Products = () => {
-  const [productsData, setProductsData] = useState<any[]>([]);
-  const fetchProductsData = async () => {
-    try {
-      const res = await axios.get(`http://localhost:8000/products/allproducts`);
-      console.log("product:", res.data.products);
-      setProductsData(res.data.products);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-
-  useEffect(() => {
-    fetchProductsData();
-  }, []);
+  const {products}=useProducts();
 
   return (
     <div className=" w-[790px] flex flex-wrap gap-5">
-      {productsData?.map((product) => (
-        <Link href={`/${product._id}`} key={product.id}>
+      {products?.map((product) => (
+        <Link href={`/${product._id}`} key={product._id}>
           <motion.div
             whileHover={{
             scale:0.9
             }}
             className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl flex flex-col items-center">
             <figure>
-              <img
+              <Image
                 src={product.images[0]}
                 alt="Shoes"
                 className="rounded-2xl h-[320px]"
+                width={247}
+                height={320}
               />
             </figure>
             <div className=" w-[240px] card-body px-2 py-3 text-sm text-start flex items-center justify-between ">

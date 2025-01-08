@@ -1,167 +1,99 @@
 "use client";
-
-import { Heart } from "lucide-react";
 import axios from "axios";
-
+import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import * as motion from "framer-motion/client"
-import { useUser } from "../context/user-context";
-import { Select } from "@radix-ui/react-select";
+import { useUser } from "../../context/user-context";
+import Image from "next/image";
+import { useProducts } from "@/context/products-context";
+import { useProduct } from "@/context/perproduct-context";
+import { useCategories } from "@/context/category-context";
+import { Heart } from 'lucide-react';
+import { Minus } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import { toast } from "sonner";
+
+type CartItem ={
+  _id:string,
+  user:string,
+  products:[{product:string; quantity:number}],
+  totalAmount:number
+}[];
 
 const ProductDetail = () => {
-  const [productData, setProductData] = useState<any>({
-    name: "",
-    price: "",
-    description: "",
-    images: [],
-    size: "",
-  });
-  const [productsData, setProductsData] = useState<any[]>([]);
   const { id } = useParams();
   const [productQuantity, setProductQuantity] = useState(1);
   const { user } = useUser();
-  const [rating, setRating] = useState(0);
-  const [hover, setHover] = useState(0);
-  const [subRating, setSubRating] = useState(0);
-  const [subHover, setSubHover] = useState(0);
-
-  const fetchProductData = async () => {
-    try {
-      const response = await axios.get(`http://localhost:8000/products/${id}`);
-      console.log("one product data:", response.data.product);
-      if (response.status === 200) {
-        setProductData(response.data.product);
-      }
+  const {products}=useProducts();
+  const {product}=useProduct();
+  const {categories}=useCategories();
+  const [cart, setCart]=useState<CartItem | []>([]);
+  const handleAddToCart=async()=>{
+    if (!user) {
+      toast.error("Хэрэглэгч нэвтэрнэ үү.");
+      return;
+    }
+  try {
+      const responses = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/carts/create-cart`, {
+            user: user._id,
+            products: [{product: id,
+            quantity: productQuantity}],
+            totalAmount:4
+          })
+      setCart(responses.data.cart);
+      toast.success("Бараа сагсанд нэмэгдлээ!");
     } catch (error) {
-      console.log("get one product is failed", error);
+      toast.error("Сагсанд бараа нэмэхэд алдаа гарлаа.");
     }
   };
-
-  useEffect(() => {
-    fetchProductData();
-  }, [id]);
-
-  const fetchProductsData = async () => {
-    try {
-      const res = await axios.get(`http://localhost:8000/products/allproducts`);
-      console.log("product:", res.data.products);
-      setProductsData(res.data.products);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-  const [category, setCategoryData] = useState<any []>([]);
-
-  const getCategories = async () => {
-    try {
-      const res = await axios.get(`http://localhost:8000/category/category`);
-      console.log("category", res.data.category);
-      setCategoryData(res.data.category);
-    } catch (error) {
-      console.log("error", error);
-    }
-  }
-
-  useEffect(() => {
-    getCategories();
-  }, []);
-
-  useEffect(() => {
-    fetchProductsData();
-  }, []);
-
-  const handleAddToCart = async () => {
-    try {
-      const response = await axios.post(
-        `http://localhost:8000/carts/create-cart`,
-        {
-          user: user?._id,
-          product: id,
-          quantity: productQuantity,
-        }
-      );
-
-      if (response.status === 200) {
-        console.log("added to cart", id);
-        console.log("first", response.data);
-        console.log("added to cart");
-      } else {
-        console.log("user not found");
-      }
-    } catch (error) {
-      console.error("couldn't add to cart", { autoClose: 60 });
-    }
-  };
-
+console.log("cart", cart);
   return (
     <div className="w-full h-full flex flex-col items-center my-10">
-      <div className="flex h-full justify-center gap-5 mb-10">
+      <div className="flex h-full justify-center gap-10 mb-10">
         <div className="w-[420px] h-[520px] rounded-2xl ">
-          <img
-            src={productData.images[0]}
-            alt=""
-            className="w-[420px] h-[520px] rounded-2xl shadow-lg"
-          />
+        <Image
+  src={product?.images[0] || "/placeholder.png"} //
+  alt={product?.name || "Product image"} // 
+  className="rounded-2xl shadow-lg w-[400px] h-[475px]"
+  width={400}
+  height={475}
+/>
         </div>
-        <div className="flex flex-col gap-2 justify-center items-start">
-          <div className="text-[24px] flex gap-3 items-center">
-            <strong>{productData.name}</strong>
-            <div className="flex">
-                  {[...Array(1)].map((star, idx) => {
-                    const currentRating = idx+1;
-                    return (
-                      <div>
-                      <Select
-                      key={`first ${idx}`}
-                     type="radio"
-                     name="rating"
-                     value={currentRating}
-                     onClick={() => setRating(currentRating)}
-                   >
-                   <Heart
-                     size={18}
-                     className="star"
-                     color={
-                       currentRating <= (hover || rating)
-                         ? "#ff0000"
-                         : "#000000"
-                     }
-                            onClick={() => setHover(currentRating)}
-                            onDoubleClick={()=>setHover(0)}
-                   /></Select>
-               </div>
-                      
-                    );
-                  })}
-                </div> 
+        <div className="flex flex-col gap-4 items-start">
+          <div className="text-[24px] flex gap-16 items-center">
+          <p className="flex flex-col"><strong>{product?.name}</strong>
+           <span className="text-sm">{product?.description}</span></p>
+            <Heart size={25} className="heart"/>
           </div>
-          <h1 className="text-sm">
-            <strong>{productData.price}₮</strong>
+          <h1 className="text-md">
+            <strong>{product?.price}₮</strong>
+            
           </h1>
-          <p className="text-sm">{productData.description}</p>
+          <p className="text-sm"></p>
           <div className="flex flex-nowrap gap-3">
-          {category.map((size)=> 
-            <button className="h-[30px] rounded-2xl border-2 border-slate px-2">
+          {categories?.map((size)=> 
+            <Button className="h-[30px] rounded-2xl border-2 border-slate px-2 hover:border-2 hover:border-black"
+            key={size._id}>
               {size.size}
-            </button>
+            </Button>
           )}
          </div>
-          <div className="flex gap-3">
-            <button
-              className="w-[30px] h-[30px] rounded-full border-2 border-slate-300"
+          <div className="flex gap-3 items-center">
+            <Button
+              className="w-[30px] h-[30px] rounded-full border-2 border-slate-300 hover:border-2 hover:border-black"
               onClick={() => setProductQuantity(productQuantity + 1)}
             >
-              +
-            </button>
-            <p>{productQuantity}</p>
-            <button
-              className="w-[30px] h-[30px] rounded-full border-2 border-slate-300"
+              <span><Plus size={14} className="heart"/></span>
+            </Button>
+            <p className="text-md">{productQuantity}</p>
+            <Button
+              className="w-[30px] h-[30px] rounded-full border-2 border-slate-300 hover:border-2 hover:border-black "
               onClick={() => setProductQuantity(productQuantity - 1)}
             >
-              -
-            </button>
+            <span><Minus size={14} className="heart"/></span>
+            </Button>
           </div>
           <motion.button
             whileTap={{
@@ -179,23 +111,29 @@ const ProductDetail = () => {
           <strong>Холбоотой бараа</strong>
         </h1>
         <div className=" w-[790px] flex flex-wrap gap-5">
-          {productsData?.map((product: any) => (
-            <Link href={`/${product._id}`} key={product.id}>
-              <div className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl flex flex-col items-center">
+          {products?.map((product) => (
+            <Link href={`/${product._id}`} key={product._id}>
+              <motion.div 
+              whileHover={{
+                scale:0.9
+              }}
+              className="card bg-base-100 w-[247px] h-[386px] rounded-2xl shadow-xl flex flex-col items-center">
                 <figure>
-                  <img
+                  <Image
                     src={product.images[0]}
                     alt="Shoes"
                     className="rounded-2xl h-[320px]"
+                    width={247}
+                    height={320}
                   />
                 </figure>
-                <div className="card-body w-full pl-5 text-[20px] text-start ">
+                <div className="card-body w-full pl-5 p-3 text-sm text-start ">
                   <h2 className="card-title ">{product.name}</h2>
                   <p>
                     <strong>{product.price}₮</strong>
                   </p>
                 </div>
-              </div>
+              </motion.div>
             </Link>
           ))}
         </div>

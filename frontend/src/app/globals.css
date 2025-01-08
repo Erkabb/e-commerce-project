@@ -3,7 +3,10 @@
 @tailwind utilities;
 
 .icon {
-  color: white;
+  color: #ffffff;
+}
+.heart {
+  color: black;
 }
 .headerPic {
   background-position-y: 30%;

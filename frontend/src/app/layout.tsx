@@ -2,12 +2,15 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import { ToastContainer } from "react-toastify";
-// import { UserProvider } from "./context/user-context";
 import React from "react";
 
 import Footer from "./components/footer";
 import Header from "./components/header";
-import UserProvider from "./context/user-context";
+import UserProvider from "../context/user-context";
+import { ProductProvider } from "@/context/products-context";
+import { EachProductProvider } from "@/context/perproduct-context";
+import { CategoriesProvider } from "@/context/category-context";
+import { CartsProvider } from "@/context/cart-context";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -37,12 +40,19 @@ export default function RootLayout({ children }: TProps) {
       >
         {" "}
         <UserProvider>
-          {" "}
-          <Header />
+          <ProductProvider>
+            <EachProductProvider>
+              <CategoriesProvider>
+            <CartsProvider>
+              <Header />
           {children}
           <ToastContainer />
           <Footer />
-        </UserProvider>
+          </CartsProvider>
+          </CategoriesProvider>
+          </EachProductProvider>
+          </ProductProvider>
+          </UserProvider>
       </body>
     </html>
   );

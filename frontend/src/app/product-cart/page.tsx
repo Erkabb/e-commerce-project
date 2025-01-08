@@ -1,17 +1,11 @@
 "use client";
-import React, { RefAttributes, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Trash2 } from "lucide-react";
 import axios from "axios";
-
-interface Cart {
-  usercarts: {
-    user: string;
-    products: [];
-  };
-}
+import { useCarts } from "@/context/cart-context";
 
 const Cart = () => {
-  const [carts, setCarts] = useState<Cart[]>([]);
+  const {carts}=useCarts();
   const [step, setStep] = useState(1);
   const [isChecked, setIsChecked] = useState(false);
   const [productQuantity, setProductQuantity] = useState(1);
@@ -23,31 +17,6 @@ const Cart = () => {
     pfp: "",
     address: "",
   });
-
-  const fetchCartData = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await fetch(`http://localhost:8000/carts/getcart`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      const cart = await res.json();
-      if (res.status === 200) {
-        setCarts(cart.usercarts.products);
-
-        console.log(";;", cart);
-      }
-    } catch (error) {
-      console.log("couldn't get cart", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCartData();
-  }, []);
-
   const handleChange = () => {
     if (isChecked === true) {
       setStep(step + 1);
@@ -55,7 +24,6 @@ const Cart = () => {
       setStep(step - 1);
     }
   };
-
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
@@ -64,9 +32,7 @@ const Cart = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("token", token);
       setUserData(res.data.user);
-      console.log("userinfo:", res.data.user);
     } catch (error) {
       console.log("couldn't get user's info", error);
     }
@@ -75,7 +41,7 @@ const Cart = () => {
   useEffect(() => {
     fetchUserData();
   }, []);
-
+console.log("cart", carts);
   return (
     <div className="w-full h-full flex flex-col items-center my-10 gap-10">
       <div className="flex text-black gap-32 text-[20px]">
@@ -103,19 +69,21 @@ const Cart = () => {
           <h1 className="text-[24px]">
             <strong>Сагс</strong>
           </h1>
-          {carts?.map((prod: any) => {
+          {carts?.map((prod, idx) => {
+            const item=prod.products[idx];
             return (
-              <div className="w-[600px] h-[132px] flex  border border-2-slate-100 rounded-2xl shadow-md items-center justify-evenly gap-24">
+              <div className="w-[600px] h-[132px] flex  border border-2-slate-100 rounded-2xl shadow-md items-center justify-evenly gap-24"
+              key={prod._id}>
                 <div className="flex gap-10">
                   <img
-                    src={prod.product.images[0]}
+                    src={item.images[0]}
                     alt=""
                     className="w-[110px] h-[110px] rounded-2xl"
                   />
 
                   <div className="flex flex-col gap-2 text-black">
-                    <h1 className="" key={prod.id}>
-                      <strong>{prod.product.name}</strong>
+                    <h1 className="">
+                      <strong>{item.name}</strong>
                     </h1>
                     <div className="flex gap-3">
                       <button
@@ -133,7 +101,7 @@ const Cart = () => {
                       </button>
                     </div>
                     <h1 className="text-[18px]">
-                      <strong>{prod.product.price}₮</strong>
+                      <strong>{item.price}₮</strong>
                     </h1>
                   </div>
                 </div>
@@ -169,19 +137,21 @@ const Cart = () => {
               <strong>Сагс</strong>
             </h1>
             <div className="flex flex-col gap-5">
-              {carts?.map((prod: any) => {
+              {carts?.map((prod, idx) => {
+                  const item=prod.products[idx];
                 return (
-                  <div className="w-[600px] h-[132px] flex  border border-2-slate-100 rounded-2xl shadow-md items-center justify-evenly gap-24">
+                  <div className="w-[600px] h-[132px] flex  border border-2-slate-100 rounded-2xl shadow-md items-center justify-evenly gap-24"
+                  key={prod._id}>
                     <div className="flex gap-10">
                       <img
-                        src={prod.product.images[0]}
+                        src={item.images[0]}
                         alt=""
                         className="w-[110px] h-[110px] rounded-2xl"
                       />
 
                       <div className="flex flex-col gap-2 text-black">
-                        <h1 className="" key={prod.id}>
-                          <strong>{prod.product.name}</strong>
+                        <h1 className="" key={idx}>
+                          <strong>{item.name}</strong>
                         </h1>
                         <input
                           type="number"
@@ -190,7 +160,7 @@ const Cart = () => {
                         />
 
                         <h1 className="text-[18px]">
-                          <strong>{prod.product.price}₮</strong>
+                          <strong>{item.price}₮</strong>
                         </h1>
                       </div>
                     </div>

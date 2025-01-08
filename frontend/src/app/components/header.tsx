@@ -1,45 +1,15 @@
 "use client";
 import { User, ShoppingCart, Heart, Search, LogOut } from "lucide-react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
-import axios from "axios";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
+import { useUser } from "@/context/user-context";
+import { useCategories } from "@/context/category-context";
 
 const Header = () => {
-  const [user, setUser] = useState(false);
-  const [category, setCategory] = useState([]);
-  const fetchUserData = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const res = await axios.get(`http://localhost:8000/users/current-user`, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-
-      setUser(res.data.user);
-    } catch (error) {
-      console.log("couldn't change header", error);
-    }
-  };
-  useEffect(() => {
-    fetchUserData();
-  }, []);
-
-  const fetchCategories = async () => {
-    try {
-      const res = await axios.get(`http://localhost:8000/category/category`);
-      console.log("category", res.data.category);
-      setCategory(res.data.category);
-    } catch (error) {
-      console.log("error", error);
-    }
-  };
-
-  useEffect(() => {
-    fetchCategories();
-  }, [])
+  const {user} = useUser();
+  const {categories}=useCategories();
 
   return (
     <header className="flex flex-col">
@@ -47,7 +17,8 @@ const Header = () => {
         <div className="flex gap-5 items-center ">
           
             <Link href={"/home"}>
-            <img src="./Vector.png" alt="" />
+            <Image src="/Vector.png" alt="g" width={20} height={20}/>
+           
             </Link>
     
           <Link href={"/category"}>
@@ -67,19 +38,19 @@ const Header = () => {
         <div className="flex gap-4 items-center">
          
           {user && (
-            <div className="flex gap-2">
+            <div className="flex gap-4">
                <Link href={"/product-cart"}>
-            <ShoppingCart className="icon" size={20}/>
+            <ShoppingCart className="icon" size={18}/>
           </Link>
           <Link href={"/wishlist"}>
-            <Heart className="icon" size={20}/>
+            <Heart className="icon" size={18}/>
           </Link>
               <Link href={"/userprofile"}>
-                <User className="icon" size={20}/>
+                <User className="icon" size={18}/>
               </Link>
               <Link href="/login">
                 <LogOut
-                  className="icon" size={20}
+                  className="icon" size={18}
                   onClick={() => {
                     localStorage.clear();
                   }}
@@ -90,7 +61,7 @@ const Header = () => {
           {!user && (
             <div className="flex gap-2">
               <Link href={"/signup"}>
-                <Button className=" btn text-white h-[35px]  border-2 border-blue-700  rounded-2xl hover:bg-blue-700">
+                <Button className=" btn text-white h-[35px]  border-2 border-blue-700  rounded-2xl hover:bg-blue-700 hover:w-[114px]">
                   Бүртгүүлэх
                 </Button>
               </Link>
@@ -103,10 +74,12 @@ const Header = () => {
           )}
         </div>
       </div>
-      {user && (  <div className="w-[full] max-md:h-[50px] flex bg-black text-[24px] text-white justify-center gap-10">
-        {category.map((cat:any) => (<div className="dropdown py-2">
-            <div className="btn m-1 menu-horizontal flex-none text-sm">
-            <p><strong>{cat.name}</strong></p>
+      {user && (  <div className="w-full h-[50px] flex bg-black justify-center gap-10">
+        {categories?.map((cat) => (
+          <div className="dropdown py-2"  key={cat._id}>
+            <div className="btn m-1 menu-horizontal flex-none text-sm "
+          >
+            <Button className="text-white"><strong>{cat.material}</strong></Button>
             </div>
           </div>
         ))}

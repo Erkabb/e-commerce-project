@@ -2,7 +2,6 @@
 
 import axios from "axios";
 import React, { useContext, useState, createContext, useEffect } from "react";
-import { toast } from "react-toastify";
 
 interface IUser {
   _id: string;
@@ -35,7 +34,6 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
             headers: { Authorization: `Bearer ${userToken}` },
           }
         );
-        console.log("user", response.data);
         if (response.status === 200) {
           setUser(response.data.user);
         }

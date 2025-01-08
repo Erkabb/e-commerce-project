@@ -7,6 +7,7 @@ interface IProduct {
   size: string;
   images: [string];
   isBrandNew: boolean;
+  color:[string];
   quantity: number;
   discount: number;
   category: Schema.Types.ObjectId;
@@ -37,6 +38,10 @@ const productSchema = new Schema<IProduct>(
     isBrandNew: {
       type: Boolean,
       default: true,
+    },
+    color: {
+      type:[String],
+      default:["Black"],
     },
     quantity: {
       type: Number,
