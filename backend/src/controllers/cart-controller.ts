@@ -1,16 +1,18 @@
 import { Request, Response } from "express";
 import Cart from "../models/cart.model";
+import Product from "../models/products.model";
 
 export const createCart = async (req: Request, res: Response) => {
-  const { userId, productId, totalAmount, soldQuantity } = req.body;
+  const { user, productId, name, price, description, size, images, color, soldQuantity, totalQuantity, discount, category, totalAmount } = req.body;
 
   try {
-    const userCart = await Cart.findOne({ user: userId });
+    const userCart = await Cart.findOne({ user });
 
     if (!userCart) {
       const newCart = await Cart.create({
-        user: userId,
-        products: [{ product: productId, soldQuantity }],
+        user,
+        productId,
+        products: [{ name, price, description, size, images, color, soldQuantity, totalQuantity, discount, category }],
         totalAmount,
       });
       return res.status(200).json({
@@ -19,21 +21,15 @@ export const createCart = async (req: Request, res: Response) => {
       });
     }
 
-    // Check for duplicate product
-    const productIndex = userCart.products.findIndex(
-      (item) => item.product.toString() === productId
-    );
-
-    if (productIndex > -1) {
-      // Update quantity of existing product
-      userCart.products[productIndex].soldQuantity += soldQuantity;
-    } else {
-      // Add new product
-      userCart.products.push({ product: productId, soldQuantity });
+    const findProduct= await Product.findById(productId);
+    if(findProduct){
+      const productIdx = userCart.products.findIndex(
+        (item) => item._id.toString() === productId.toString()
+      );
+      if (productIdx > -1) {
+        userCart.products[productIdx].soldQuantity += soldQuantity;
+      }
     }
-
-    // Update total amount (optional: calculate based on product prices)
-    userCart.totalAmount += totalAmount;
 
     const updatedCart = await userCart.save();
 
@@ -56,14 +52,14 @@ export const getUsersCarts = async (req: Request, res: Response) => {
     const userCart = await Cart.findOne({ user: id }).populate(
       "products.product"
     );
-
+  
     if (!userCart) {
       return res.status(404).json({ message: "Cart not found" });
     }
 
     return res.status(200).json({
       message: "Got user's cart",
-      cart: userCart,
+      cart: userCart ,
     });
   } catch (error) {
     console.error("Error getting cart:", error);
@@ -84,7 +80,7 @@ export const deleteCart = async (req: Request, res: Response) => {
     }
 
     const productIndex = userCart.products.findIndex(
-      (item) => item.product.toString() === pid
+      (item) => item._id.toString() === pid
     );
 
     if (productIndex === -1) {

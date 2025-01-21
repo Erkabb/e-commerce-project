@@ -8,7 +8,8 @@ interface IProduct {
   images: [string];
   isBrandNew: boolean;
   color:[string];
-  quantity: number;
+  soldQuantity: number;
+  totalQuantity:number,
   discount: number;
   category: Schema.Types.ObjectId;
 }
@@ -43,9 +44,12 @@ const productSchema = new Schema<IProduct>(
       type:[String],
       default:["Black"],
     },
-    quantity: {
+    soldQuantity: {
       type: Number,
       required: true,
+    },
+    totalQuantity:{
+      type:Number,
     },
     discount: { type: Number, default: 0 },
     category: {

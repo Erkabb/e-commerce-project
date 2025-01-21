@@ -27,7 +27,6 @@ export const authentication = (
   }
   const token = req.headers.authorization?.split(" ")[1];
   const user = decodeToken(token);
-  console.log("token", token);
-  req.user = user;
+    req.user = user;
   next();
 };

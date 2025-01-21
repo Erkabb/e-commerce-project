@@ -1,6 +1,5 @@
 import { model, Schema } from "mongoose";
 import bcrypt from "bcrypt";
-
 interface IUser {
   _id: Schema.Types.ObjectId;
   firstname: String;

@@ -52,7 +52,6 @@ export const verifyOtp = async (req: Request, res: Response) => {
   findUser.passwordResetToken = hashedResetToken;
   findUser.passwordResetTokenExpire = new Date(Date.now() + 10 * 60 * 1000);
   await findUser.save();
-  console.log("token:", resetToken);
   await sendEmail(
     email,
     `<a href="http://localhost:3000/newpass?resettoken="${resetToken}>Reset Password link</a>`
