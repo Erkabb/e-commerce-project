@@ -31,14 +31,14 @@ const Wishlist = () => {
         <div className="w-[600px] h-[132px] flex  border border-2-slate-100 rounded-2xl shadow-md items-center justify-evenly gap-24">
           <div className="flex gap-10">
             <img
-              src={prod.product.images[0]}
+              src=""
               alt=""
               className="w-[110px] h-[110px] rounded-2xl"
             />
 
             <div className="flex flex-col gap-2 text-black">
-              <h1 className="" key={prod.id}>
-                <strong>{prod.product.name}</strong>
+              <h1 className="">
+                <strong></strong>
               </h1>
               <input
                 type="number"
@@ -47,7 +47,7 @@ const Wishlist = () => {
               />
 
               <h1 className="text-[18px]">
-                <strong>{prod.product.price}₮</strong>
+                <strong>₮</strong>
               </h1>
             </div>
           </div>

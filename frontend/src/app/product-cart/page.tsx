@@ -48,7 +48,7 @@ const Cart = () => {
                 Сагс
             </h1>
             <div className='mx-10 flex border border-slate-100 rounded-2xl shadow-md items-center justify-evenly gap-24'>
-                {/* {cartData?.map((prod, idx)=>{
+                {cartData?.map((prod, idx)=>{
                     const {product}=prod;
                     return (
                     <div className='flex gap-10' key={idx}>
@@ -72,7 +72,7 @@ const Cart = () => {
                         </div>
                         <Trash2 size={24} onClick={()=>setProductQuantity(productQuantity-1)}/>
                     </div>)
-                })} */}
+                })}
                 
             </div>  
             <Button className='btn border bg-[#000] rounded-xl text-white'>

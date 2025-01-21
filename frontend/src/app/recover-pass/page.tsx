@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import axios from "axios";
-import { useRouter } from "next/navigation";
 import React, { ChangeEvent, useEffect, useState } from "react";
 import { MailOpen } from "lucide-react";
 import ClipLoader from "react-spinners/ClipLoader";
@@ -14,8 +13,6 @@ import {
 } from "@/components/ui/input-otp";
 
 const RecoverPass = () => {
-  const router = useRouter();
-
   const [loading, setLoading] = useState(false);
   const [email, setEmail] = useState("");
   const [step, setStep] = useState(1);

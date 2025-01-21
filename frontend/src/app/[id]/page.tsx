@@ -49,6 +49,7 @@ const ProductDetail = () => {
       toast.error("Сагсанд бараа нэмэхэд алдаа гарлаа.");
     }
   };
+  console.log("first", cart);
   return (
     <div className="w-full h-full flex flex-col items-center my-10">
       <div className="flex h-full justify-center gap-10 mb-10">
