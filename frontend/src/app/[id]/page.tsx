@@ -18,7 +18,7 @@ import { toast } from "sonner";
 type CartItem ={
   _id:string,
   user:string,
-  products:[{product:string; quantity:number}],
+  products:[{product:string; soldQuantity:number}],
   totalAmount:number
 }[];
 
@@ -29,7 +29,7 @@ const ProductDetail = () => {
   const {products}=useProducts();
   const {product}=useProduct();
   const {categories}=useCategories();
-  const [cart, setCart]=useState<CartItem | []>([]);
+  const [cart, setCart]=useState<CartItem []>([]);
   const handleAddToCart=async()=>{
     if (!user) {
       toast.error("Хэрэглэгч нэвтэрнэ үү.");
@@ -38,17 +38,17 @@ const ProductDetail = () => {
   try {
       const responses = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/carts/create-cart`, {
             user: user._id,
-            products: [{product: id,
-            quantity: productQuantity}],
-            totalAmount:4
-          })
+            products: [{
+              product: id,
+              soldQuantity: productQuantity}],
+            totalAmount: productQuantity
+          });
       setCart(responses.data.cart);
       toast.success("Бараа сагсанд нэмэгдлээ!");
     } catch (error) {
       toast.error("Сагсанд бараа нэмэхэд алдаа гарлаа.");
     }
   };
-console.log("cart", cart);
   return (
     <div className="w-full h-full flex flex-col items-center my-10">
       <div className="flex h-full justify-center gap-10 mb-10">
@@ -64,7 +64,7 @@ console.log("cart", cart);
         <div className="flex flex-col gap-4 items-start">
           <div className="text-[24px] flex gap-16 items-center">
           <p className="flex flex-col"><strong>{product?.name}</strong>
-           <span className="text-sm">{product?.description}</span></p>
+        </p>
             <Heart size={25} className="heart"/>
           </div>
           <h1 className="text-md">
@@ -104,6 +104,10 @@ console.log("cart", cart);
           >
             <strong>Add to cart</strong>
           </motion.button>
+          <p className="w-[400px] flex flex-col text-start text-sm">
+            <span>Description:</span>
+            <span>{product?.description}</span>
+         </p>
         </div>
       </div>
       <div className="flex flex-col gap-5">

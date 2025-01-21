@@ -20,10 +20,8 @@ const UserProfile = () => {
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("token", token);
       setUserData(res.data.user);
-      console.log("userinfo:", res.data.user);
-    } catch (error) {
+        } catch (error) {
       console.log("couldn't get user's info", error);
     }
   };

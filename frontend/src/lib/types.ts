@@ -2,12 +2,13 @@ export type Product = {
   _id: string;
   name: string;
   description: string;
+  price:number;
   size?: string;
   images: [string];
   isBrandNew: boolean;
-  quantity?: number;
+  totalQuantity?:number;
   discount: number;
-  category: Category;
+  category?: Category;
   createdAt?: Date;
   updatedAt?: Date;
 };
@@ -21,8 +22,6 @@ export type Category = {
 };
 
 export type Cart = {
-  products: {
     product: Product;
-    quantity: number;
-  };
-};
+   soldQuantity: number;
+}[];

@@ -10,7 +10,6 @@ import UserProvider from "../context/user-context";
 import { ProductProvider } from "@/context/products-context";
 import { EachProductProvider } from "@/context/perproduct-context";
 import { CategoriesProvider } from "@/context/category-context";
-import { CartsProvider } from "@/context/cart-context";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -43,12 +42,10 @@ export default function RootLayout({ children }: TProps) {
           <ProductProvider>
             <EachProductProvider>
               <CategoriesProvider>
-            <CartsProvider>
               <Header />
           {children}
           <ToastContainer />
           <Footer />
-          </CartsProvider>
           </CategoriesProvider>
           </EachProductProvider>
           </ProductProvider>
